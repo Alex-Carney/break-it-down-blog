@@ -1,0 +1,85 @@
+---
+title: 'MDX Test'
+description: 'A primer for leaders on adopting AI technologies'
+pubDate: 'Feb 1 2026'
+heroImage: '../../assets/blog-placeholder-3.jpg'
+---
+
+This plot is rendered using plain JavaScript inside this MDX file.
+No React. No framework. Just the browser.
+
+<canvas
+    id="plot"
+    width="600"
+    height="300"
+    style="border:1px solid #ccc; border-radius:8px;"
+></canvas>
+
+<div style="margin-top:12px;">
+    <label for="freq">Frequency:</label>
+    <input
+        id="freq"
+        type="range"
+        min="0.5"
+        max="10"
+        step="0.1"
+        value="2"
+    />
+    <span id="freq-label">2.0</span>
+</div>
+
+<script
+    is:inline
+    set:html={String.raw`
+(function () {
+  const canvas = document.getElementById("plot");
+  if (!canvas) return;
+
+      const ctx = canvas.getContext("2d");
+      const slider = document.getElementById("freq");
+      const label = document.getElementById("freq-label");
+      if (!ctx || !slider || !label) return;
+
+      function draw(freq) {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        ctx.beginPath();
+        ctx.moveTo(0, canvas.height / 2);
+
+        const N = 500;
+        for (let i = 0; i < N; i++) {
+          const x = (i / (N - 1)) * canvas.width;
+          const t = (i / (N - 1)) * 2 * Math.PI;
+          const y =
+            canvas.height / 2 -
+            Math.sin(freq * t) * (canvas.height * 0.4);
+          ctx.lineTo(x, y);
+        }
+
+        ctx.strokeStyle = "#2563eb";
+        ctx.lineWidth = 2;
+        ctx.stroke();
+      }
+
+      draw(Number(slider.value));
+
+      slider.addEventListener("input", function (e) {
+        const f = Number(e.target.value);
+        label.textContent = f.toFixed(1);
+        draw(f);
+      });
+    })();
+`}
+></script>
+
+<div class="callout">
+    <h2>Styled HTML section</h2>
+    <p>This is raw HTML inside a Markdown post.</p>
+</div>
+
+
+### Why this works
+
+- MDX outputs literal HTML.
+- The `<script>` tag runs in the browser.
+- Astro does not interfere with it.
