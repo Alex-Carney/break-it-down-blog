@@ -12,7 +12,9 @@
       "Bash(/tmp/verify4.sh:*)",
       "Bash(bash /tmp/verify4.sh)",
       "Bash(/tmp/final_verification.sh:*)",
-      "Bash(bash /tmp/final_verification.sh)"
+      "Bash(bash /tmp/final_verification.sh)",
+      "Bash(npm uninstall:*)",
+      "Bash(npm install:*)"
     ]
   }
 }
