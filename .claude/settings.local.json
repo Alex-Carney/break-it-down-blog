@@ -3,7 +3,16 @@
     "allow": [
       "Bash(git init:*)",
       "Bash(git add:*)",
-      "Bash(git commit:*)"
+      "Bash(git commit:*)",
+      "Bash(/tmp/verify2.sh:*)",
+      "Bash(chmod:*)",
+      "Bash(bash /tmp/verify2.sh)",
+      "Bash(/tmp/verify3.sh:*)",
+      "Bash(bash /tmp/verify3.sh)",
+      "Bash(/tmp/verify4.sh:*)",
+      "Bash(bash /tmp/verify4.sh)",
+      "Bash(/tmp/final_verification.sh:*)",
+      "Bash(bash /tmp/final_verification.sh)"
     ]
   }
 }
