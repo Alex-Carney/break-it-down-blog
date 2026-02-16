@@ -41,7 +41,7 @@ const leftBorder = accent === "contrast" ? "border-bid-teal/30" : "border-bid-bo
 const rightBorder = accent === "contrast" ? "border-bid-coral/30" : "border-bid-border";
 ---
 
-<div class="bid-comparison-box my-8 not-prose">
+<div class="bid-comparison-box my-8 not-content">
   {/* Header */}
   <div class="grid grid-cols-[140px_1fr_1fr] sm:grid-cols-[180px_1fr_1fr] border border-bid-border bg-bid-surface">
     <div class="py-3 px-4 border-r border-bid-border">
@@ -76,7 +76,7 @@ const rightBorder = accent === "contrast" ? "border-bid-coral/30" : "border-bid-
           leftBorder,
           i % 2 === 0 ? "bg-bid-bg" : "bg-bid-surface",
         ]}>
-          <span class="text-sm font-serif text-bid-text-secondary leading-relaxed">
+          <span class="text-sm font-sans text-bid-text-secondary leading-relaxed">
             {row.left}
           </span>
         </div>
@@ -84,7 +84,7 @@ const rightBorder = accent === "contrast" ? "border-bid-coral/30" : "border-bid-
           "py-3 px-4 border-t border-bid-border",
           i % 2 === 0 ? "bg-bid-bg" : "bg-bid-surface",
         ]}>
-          <span class="text-sm font-serif text-bid-text-secondary leading-relaxed">
+          <span class="text-sm font-sans text-bid-text-secondary leading-relaxed">
             {row.right}
           </span>
         </div>

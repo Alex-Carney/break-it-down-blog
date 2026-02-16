@@ -132,6 +132,23 @@
     --border: --alpha(var(--color-base-50) / 10%);
     --input: --alpha(var(--color-base-50) / 15%);
     --outline: var(--color-primary-400);
+
+    /* BID dark mode overrides */
+    --color-bid-bg: #131315;
+    --color-bid-surface: #1c1c20;
+    --color-bid-border: #2e2e33;
+    --color-bid-text: #e5e3de;
+    --color-bid-text-secondary: #a09a90;
+    --color-bid-text-tertiary: #6b6862;
+    --color-bid-slate: #5a99aa;
+    --color-bid-teal: #40c9b8;
+    --color-bid-gold: #f0cf78;
+    --color-bid-warm: #f7b46a;
+    --color-bid-coral: #ef8466;
+    --color-bid-positive: #4cb88a;
+    --color-bid-positive-bg: #1a2e24;
+    --color-bid-negative: #d85050;
+    --color-bid-negative-bg: #2e1a1a;
   }
 
   /* starwind preflight merged with Cosmic Themes */

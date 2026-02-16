@@ -36,17 +36,17 @@ interface Props {
 const { title, subtitle, studies, source } = Astro.props;
 ---
 
-<div class="bid-evidence-table my-8 not-prose">
+<div class="bid-evidence-table my-8 not-content">
   {title && (
     <div class="mb-4">
       <p class="text-[10px] font-sans font-medium tracking-[0.14em] uppercase text-bid-text-tertiary mb-1">
         EVIDENCE
       </p>
-      <h4 class="text-base font-serif font-normal text-bid-text">
+      <h4 class="text-base font-sans font-normal text-bid-text">
         {title}
       </h4>
       {subtitle && (
-        <p class="text-sm text-bid-text-secondary font-serif mt-1">{subtitle}</p>
+        <p class="text-sm text-bid-text-secondary font-sans mt-1">{subtitle}</p>
       )}
     </div>
   )}
@@ -81,10 +81,10 @@ const { title, subtitle, studies, source } = Astro.props;
               </span>
             </td>
             <td class="py-3 px-4 border-b border-bid-border align-top">
-              <span class="text-sm font-serif text-bid-text-secondary">{study.domain}</span>
+              <span class="text-sm font-sans text-bid-text-secondary">{study.domain}</span>
             </td>
             <td class="py-3 px-4 border-b border-bid-border align-top">
-              <span class="text-sm font-serif text-bid-text-secondary leading-relaxed">{study.finding}</span>
+              <span class="text-sm font-sans text-bid-text-secondary leading-relaxed">{study.finding}</span>
             </td>
             <td class="py-3 px-4 border-b border-bid-border text-right align-top">
               <span class:list={[

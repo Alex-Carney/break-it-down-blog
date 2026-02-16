@@ -21,7 +21,7 @@ interface Props {
 const { label = "What it reveals" } = Astro.props;
 ---
 
-<aside class="bid-case-conclusion my-8 not-prose">
+<aside class="bid-case-conclusion my-8 not-content">
   <div class="border border-bid-border bg-bid-surface relative pl-8 pr-8 py-6">
     {/* Accent bar */}
     <div class="absolute left-0 top-0 bottom-0 w-1 bg-bid-slate"></div>
@@ -30,7 +30,7 @@ const { label = "What it reveals" } = Astro.props;
       {label}
     </p>
 
-    <div class="text-base font-serif text-bid-text leading-relaxed [&>p]:mb-3 [&>p:last-child]:mb-0 [&>strong]:font-semibold">
+    <div class="text-base font-sans text-bid-text leading-relaxed [&>p]:mb-3 [&>p:last-child]:mb-0 [&>strong]:font-semibold">
       <slot />
     </div>
   </div>

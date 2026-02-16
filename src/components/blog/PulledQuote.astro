@@ -21,9 +21,9 @@ interface Props {
 const { attribution } = Astro.props;
 ---
 
-<figure class="bid-pulled-quote my-12 not-prose">
+<figure class="bid-pulled-quote my-12 not-content">
   <div class="border-t border-b border-bid-border py-8 px-4 sm:px-12 text-center">
-    <blockquote class="text-xl sm:text-2xl font-serif font-normal text-bid-text leading-relaxed tracking-tight">
+    <blockquote class="text-xl sm:text-2xl font-sans font-normal text-bid-text leading-relaxed tracking-tight">
       <slot />
     </blockquote>
     {attribution && (

@@ -28,16 +28,16 @@ interface Props {
 const { number, title, description, source } = Astro.props;
 ---
 
-<figure class="bid-figure-embed my-10 not-prose">
+<figure class="bid-figure-embed my-10 not-content">
   <div class="mb-4">
     <p class="text-[10px] font-sans font-medium tracking-[0.14em] uppercase text-bid-text-tertiary mb-1">
       Figure {number}
     </p>
-    <h3 class="text-lg sm:text-xl font-serif font-normal text-bid-text leading-snug">
+    <h3 class="text-lg sm:text-xl font-sans font-normal text-bid-text leading-snug">
       {title}
     </h3>
     {description && (
-      <p class="mt-1 text-sm text-bid-text-secondary font-serif leading-relaxed max-w-xl">
+      <p class="mt-1 text-sm text-bid-text-secondary font-sans leading-relaxed max-w-xl">
         {description}
       </p>
     )}

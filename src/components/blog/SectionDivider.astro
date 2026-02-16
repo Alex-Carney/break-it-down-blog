@@ -19,15 +19,15 @@ const { statement } = Astro.props;
 ---
 
 {statement ? (
-  <div class="bid-section-divider my-10 not-prose flex items-center gap-6">
+  <div class="bid-section-divider my-10 not-content flex items-center gap-6">
     <div class="flex-1 h-px bg-bid-border"></div>
-    <p class="text-sm font-serif italic text-bid-text-secondary whitespace-nowrap">
+    <p class="text-sm font-sans italic text-bid-text-secondary whitespace-nowrap">
       {statement}
     </p>
     <div class="flex-1 h-px bg-bid-border"></div>
   </div>
 ) : (
-  <div class="bid-section-divider my-10 not-prose">
+  <div class="bid-section-divider my-10 not-content">
     <div class="flex justify-center gap-2">
       <div class="w-1 h-1 rounded-full bg-bid-text-tertiary/40"></div>
       <div class="w-1 h-1 rounded-full bg-bid-text-tertiary/40"></div>

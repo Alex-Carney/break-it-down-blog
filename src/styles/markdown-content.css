@@ -28,6 +28,28 @@
   @apply text-muted-foreground;
 }
 
+.dark .markdown-content
+:not(
+    pre *,
+    .admonition *,
+    details *,
+    blockquote *,
+    span,
+    a,
+    strong,
+    th,
+    code,
+    em,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6
+  ):not(:where(.not-content *)) {
+    @apply text-muted-foreground;
+}
+
 /* paragraph text size */
 /* .markdown-content p:not(:where(.not-content *)) {
 	@apply lg:text-lg;

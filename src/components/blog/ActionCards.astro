@@ -27,17 +27,17 @@ interface Props {
 const { actions } = Astro.props;
 ---
 
-<div class="bid-action-cards my-8 not-prose grid gap-4 sm:grid-cols-1">
+<div class="bid-action-cards my-8 not-content grid gap-4 sm:grid-cols-1">
   {actions.map((action, i) => (
     <div class="bg-bid-surface border border-bid-border p-6 flex gap-5">
       <div class="flex-shrink-0 w-9 h-9 rounded-full bg-bid-slate flex items-center justify-center">
         <span class="text-sm font-sans font-medium text-white">{i + 1}</span>
       </div>
       <div class="flex-1 min-w-0">
-        <h4 class="text-base font-serif font-normal text-bid-text leading-snug mb-2">
+        <h4 class="text-base font-sans font-normal text-bid-text leading-snug mb-2">
           {action.title}
         </h4>
-        <p class="text-sm font-serif text-bid-text-secondary leading-relaxed">
+        <p class="text-sm font-sans text-bid-text-secondary leading-relaxed">
           {action.body}
         </p>
         {action.stat && (
