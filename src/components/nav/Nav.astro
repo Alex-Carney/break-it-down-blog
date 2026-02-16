@@ -1,6 +1,5 @@
 ---
 import Button from "@/components/button/Button.astro";
-import LanguageSelect from "@/components/language-select/LanguageSelect.astro";
 import SiteLogo from "@/components/site-logo/SiteLogo.astro";
 import ThemeToggle from "@/components/theme-toggle/ThemeToggle.astro";
 import { getLocaleFromUrl } from "@/js/localeUtils";
@@ -13,7 +12,6 @@ import NavLink from "./NavLink.astro";
 
 const currLocale = getLocaleFromUrl(Astro.url);
 const navData = getTranslatedData("navData", currLocale);
-import { locales } from "@/config/siteSettings.json";
 // console.log(JSON.stringify(navData, null, 2));
 
 interface Props {
@@ -78,8 +76,6 @@ const { navStyle = "default" } = Astro.props as Props;
           >
             Get All Access
           </Button>
-
-          {locales.length > 1 && <LanguageSelect class="ml-4 hidden md:block" />}
 
           <!-- mobile nav menu, only load on small screens where it is visible -->
           <div class="md:hidden">

@@ -11,8 +11,6 @@ const siteData = getTranslatedData("siteData", currLocale);
 
 import jsonLDGenerator from "@/js/jsonLD";
 
-import HrefLang from "./HrefLang.astro";
-
 interface BaseProps {
   title: string;
   description: string;
@@ -113,9 +111,6 @@ const imageUrl =
   noindex={noindex}
   nofollow={noindex}
 />
-
-<!-- hreflang attributes -->
-<HrefLang />
 
 <!-- JSON LD -->
 <Fragment set:html={jsonLD} />
