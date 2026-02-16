@@ -1,0 +1,702 @@
+---
+title: AI in Business Systems
+description: This is a short post on how to create a gradient underline with Tailwind CSS to separate sections of your page, or just to make your links look cool!
+draft: false
+authors:
+  - main-author
+pubDate: 2026-02-15
+heroImage: ../ai-business-systems/heroImage.png
+categories:
+  - AI
+tags:
+  - AI
+---
+
+import ComparisonBox from '@/components/blog/ComparisonBox.astro'
+import StatCallout from '@/components/blog/StatCallout.astro'
+import StatRow from '@/components/blog/StatRow.astro'
+import Callout from '@/components/blog/Callout.astro'
+import CaseConclusion from '@/components/blog/CaseConclusion.astro'
+import PulledQuote from '@/components/blog/PulledQuote.astro'
+import EvidenceTable from '@/components/blog/EvidenceTable.astro'
+import ActionCards from '@/components/blog/ActionCards.astro'
+import FigureEmbed from '@/components/blog/FigureEmbed.astro'
+import SectionDivider from '@/components/blog/SectionDivider.astro'
+
+
+import AITaxonomy from '../ai-business-systems/figures/figure-1-ai-taxonomy.jsx'
+import JaggedFrontier from '../ai-business-systems/figures/figure-2-jagged-frontier.jsx'
+import EnterpriseAIStack from '../ai-business-systems/figures/figure-3-enterprise-ai-stack.jsx'
+import DeploymentComparator from '../ai-business-systems/figures/figure-4-deployment-comparator.jsx'
+import WatsonScorecard from '../ai-business-systems/figures/figure-5-watson-scorecard.jsx'
+import ZillowTransition from '../ai-business-systems/figures/figure-6-zillow-transition.jsx'
+import FailureCascade from '../ai-business-systems/figures/figure-7-failure-cascade.jsx'
+import CompoundingError from '../ai-business-systems/figures/figure-compounding-error.jsx'
+import MaturityLandscape from '../ai-business-systems/figures/figure-9-maturity-landscape.jsx'
+import InvestmentAllocation from '../ai-business-systems/figures/figure-9-investment-allocation.jsx'
+import AdoptionGap from '../ai-business-systems/figures/figure-10-adoption-gap.jsx'
+import KlarnaArc from '../ai-business-systems/figures/figure-11-klarna-arc.jsx'
+import HighPerformerPatterns from '../ai-business-systems/figures/figure-high-performer-patterns.jsx'
+
+# The AI Primer
+
+**Technology, adoption, and enterprise value**
+
+*Break it Down | February 2026*
+
+---
+
+<StatRow stats={[
+    { value: "88%", label: "of organisations now use AI", accent: "slate" },
+    { value: "~6%", label: "report meaningful financial returns", accent: "coral" },
+    { value: "$364–400B", label: "in AI capex (2025)", accent: "gold" },
+]} />
+
+The gap between what AI can demonstrably do and what most organisations have managed to get from it is the most expensive unanswered question in enterprise technology. This primer examines where it comes from, what sustains it, and what the organisations that have closed it did differently.
+
+---
+
+## Key findings
+
+**AI works at the task level.** Six controlled studies, spanning more than 11,000 workers, show productivity gains of 15 to 56 per cent — on specific tasks. Outside the technology's capability boundary, AI makes skilled professionals measurably worse.
+
+**Most implementations fail to deliver enterprise value.** Across McKinsey, BCG/MIT Sloan, and S&P Global, 70 to 80 per cent of organisations report no significant business value from AI.
+
+**The failures are primarily organisational, not technological.** Four of the top five root causes of AI project failure are organisational: misunderstood problems, inadequate data, technology-first mentality, and insufficient infrastructure planning.
+
+**The highest-leverage investments are in foundations, not models.** The AI model changes every three to six months. Data infrastructure, integration architecture, and organisational capability retain their value across model generations.
+
+---
+
+## Contents
+
+1. The gap
+2. How the technology works
+3. What AI can actually do
+4. What it costs
+5. Why implementations fail
+6. Where it has worked — and what it cost
+7. The system underneath
+8. What to invest in
+
+Methodology & sources
+
+---
+
+## 1. The gap
+
+When American manufacturers first adopted electric power in the 1890s, the standard approach was to bolt electric motors onto factory floors designed around a central steam-driven shaft. The layout, the workflow, the organisational structure — all stayed the same. Productivity gains were negligible for roughly twenty years. The shortfall was attributed to the technology, to the workforce, to insufficient investment. The actual constraint was the factory itself.
+
+The parallel to enterprise AI is not metaphorical. It is structural.
+
+Nearly nine out of ten organisations now use artificial intelligence. Fewer than one in ten report meaningful financial returns from it. The scale of the commitment is not in question: in 2025, the five largest American technology companies will spend between $364 billion and $400 billion on AI infrastructure, roughly four times what they spent three years ago. Capital markets have generally rewarded the commitment.
+
+<FigureEmbed
+    number={1}
+    title="The Adoption–Value Gap"
+    description="Three headline metrics and failure rate comparison across major surveys, benchmarked against the traditional IT project failure baseline."
+    source="McKinsey Global AI Survey 2025 (N=1,491); BCG/MIT Sloan 2025 (N=1,250); S&P Global 2025 (N=1,000+); Standish Group (traditional IT baseline)"
+>
+    <AdoptionGap client:load />
+</FigureEmbed>
+
+<Callout type="insight" title="The adoption-value gap">
+    McKinsey's 2025 Global Survey (N=1,491): 88% adoption. ~6% qualify as "high performers" — meaning they attribute 5+ percentage points of earnings to AI. The industry-wide spend-to-revenue ratio exceeds 10:1. In most capital allocation contexts, that ratio would prompt a re-examination of the underlying thesis. In AI, it has mostly produced guidance to spend more.
+</Callout>
+
+### The statistics that shaped the conversation
+
+Before examining the evidence, it is worth tracing the numbers most organisations currently rely on.
+
+<Callout type="myth" title="The numbers everyone cites">
+    <p><strong>"85% of AI projects fail"</strong> — traces to a 2017 Gartner analyst's social media posts. No published methodology, no sample frame, no definition of failure. The original claim was about Hadoop-era big data projects, not AI.</p>
+    <p><strong>"87% of data science projects never make it to production"</strong> — originates from a 2019 VentureBeat article citing an earlier VentureBeat article, which itself cites no primary source.</p>
+    <p>Both numbers appear regularly in board papers and investor presentations. <strong>Neither traces to published research.</strong></p>
+</Callout>
+
+### What the evidence actually shows
+
+The studies with published methodology tell a more useful story, and they largely agree.
+
+<ComparisonBox
+    leftTitle="AI project failure"
+    rightTitle="Traditional IT failure"
+    accent="contrast"
+    rows={[
+        { label: "McKinsey 2025 (N=1,491)", left: "74% difficulty capturing value at scale", right: "—" },
+        { label: "BCG / MIT Sloan (N=1,250)", left: "~70% no significant business impact", right: "—" },
+        { label: "S&P Global (N=1,000+)", left: "~72% comparable failure levels", right: "—" },
+        { label: "Convergent range", left: "70–80%", right: "40–50% (Standish Group)" },
+    ]}
+    caption="Three independent surveys, different methodologies, same range. AI failure rates are roughly double the traditional IT baseline."
+/>
+
+The surveys use different definitions of failure: some measure financial return, some measure whether the system reached production, some measure whether people actually used it. Those distinctions matter — a system that deploys successfully but generates no measurable return failed for different reasons than one that never left the pilot stage. But the consistency across independent sources with different methodologies is itself a finding.
+
+<StatCallout
+    value="42%"
+    label="of companies abandoned most AI initiatives in 2025 — up from 17% the year before. The average organisation scrapped 46% of proofs of concept before reaching production."
+    source="S&P Global 2025"
+    accent="coral"
+/>
+
+Something specific to AI is at work, not just the normal difficulty of enterprise technology.
+
+Like the factories of the 1890s, the organisations bolting AI onto existing structures are getting negligible returns. The evidence assembled in this primer points to the same structural dynamic: capable tools meeting operating environments built for a different way of working. The organisations that have redesigned their environments — a minority, roughly 6 per cent — are the ones closing the gap.
+
+---
+
+## 2. How the technology works
+
+A useful heuristic: if you cannot explain to a non-technical colleague what your AI system is *actually doing* — not what the vendor says it does, but what computation is occurring — you cannot evaluate its risks, its costs, or its limitations. Most purchasing decisions are made without this understanding, and it shows in the outcomes.
+
+AI is not one technology. It is a nested set of increasingly specific technologies, each with different mechanics, costs, and limitations.
+
+<FigureEmbed
+    number={2}
+    title="The AI Taxonomy"
+    description="Four layers of AI technology, from traditional machine learning to generative AI. The spend-vs-value columns reveal the core inversion: the layers absorbing the most investment generate the least documented return."
+    source="Enterprise spend estimates: McKinsey 2025, Menlo Ventures 2025. Value concentration: BCG/MIT Sloan 2025, Wharton/GBK 2025."
+>
+    <AITaxonomy client:load />
+</FigureEmbed>
+
+The critical inversion is in the spend-vs-value columns. What most people mean when they say "AI" in 2026 is generative AI — chatbots and content generation. What most enterprises actually deploy in production is traditional machine learning: predictive models, classification, recommendation engines. The layer that generates the most excitement is also the layer with the least documented enterprise value per dollar spent.
+
+That distinction matters for the rest of this primer. Understanding what the technology actually does — and does not do — at each layer determines whether an investment thesis holds up.
+
+### The core mechanism
+
+An LLM is, at bottom, a next-token prediction engine. Given a sequence of text, it predicts the most statistically probable next word. It processes the input through billions of parameters encoding patterns from training data. The output is a probability distribution over the entire vocabulary. It samples, appends, and repeats.
+
+That is the entire operation. Everything a language model produces — fluent prose, working code, apparent reasoning — emerges from next-token prediction applied at enormous scale. There is no separate understanding module. There is no database being queried. There is a statistical model generating the most plausible continuation, millions of times in sequence.
+
+<Callout type="warning" title="Plausibility ≠ truth">
+    LLMs optimise for what text *would plausibly come next*, not for whether that text is factually correct. When a model generates a confident citation to a paper that does not exist, it is producing text that *looks like* what a real citation looks like. OpenAI's more powerful o3 reasoning models show **33–51% hallucination rates** on factual benchmarks — *more than double* the rates of the less powerful o1 models. More capability does not automatically mean more reliability.
+</Callout>
+
+Output quality depends heavily on input quality. The same model produces dramatically different results depending on how the prompt is structured. And a model's knowledge is frozen at training time — it has no access to current events or internal data unless that access is provided explicitly.
+
+### Bridging the knowledge gap
+
+Two techniques address this limitation.
+
+<ComparisonBox
+    leftTitle="RAG (Retrieval-Augmented Generation)"
+    rightTitle="Fine-Tuning"
+    rows={[
+        { label: "How it works", left: "Retrieves relevant documents from your data at query time; includes them alongside the user's question", right: "Further trains an existing model on organisation-specific data, adjusting its parameters for a particular domain" },
+        { label: "What it requires", left: "Document pipeline, vector database, retrieval logic", right: "Curated datasets, ML engineering expertise, periodic retraining" },
+        { label: "Best for", left: "Grounding responses in current organisational data", right: "Domain-specific language, proprietary processes" },
+        { label: "Cost", left: "Moderate (infrastructure + retrieval pipeline)", right: "High ($10K–$100K+ per training run)" },
+        { label: "Adoption", left: "Most widely deployed enterprise AI pattern in 2025–26", right: "Use when RAG cannot deliver sufficient performance" },
+    ]}
+    caption="For most enterprise use cases, the emerging practice is to start with RAG and fine-tune only if RAG cannot deliver sufficient performance."
+/>
+
+### What changed in 2024 and 2025
+
+Three capability extensions have materially altered what these systems can do.
+
+<ComparisonBox
+    leftTitle="Capability"
+    rightTitle="What it means"
+    rows={[
+        { label: "Reasoning models", left: "Chain-of-thought processing; step-by-step problem solving (OpenAI o1/o3 series)", right: "Substantial gains on math and science benchmarks. Cost: 10–30× more tokens per request." },
+        { label: "Multimodal models", left: "Process images, audio, and video alongside text", right: "A model can examine a manufacturing defect photo or summarise a meeting recording." },
+        { label: "Agentic architectures", left: "Models take actions: executing code, calling APIs, managing multi-step workflows", right: "The most significant architectural shift in 2025 — and the most uncertain." },
+    ]}
+/>
+
+<Callout type="warning" title="The compounding error problem">
+    <p>Each step in an agentic workflow is an additional opportunity for error to compound. If each step has 95% reliability — optimistic for current systems — a 20-step workflow succeeds only <strong>36%</strong> of the time (0.95²⁰). Agentic AI systems predict <strong>73% success</strong> against actual rates of <strong>35%</strong> on complex tasks. The perception-reality gap documented in human-AI studies extends to the systems themselves.</p>
+    <p>Gartner projects that more than <strong>40% of agentic AI projects</strong> will be cancelled by 2027 due to escalating costs and unclear business value.</p>
+</Callout>
+
+<FigureEmbed
+    number={3}
+    title="Reliability Decay in Multi-Step Workflows"
+    description="At 95% per-step reliability, a 20-step workflow succeeds only 36% of the time. Adjust the reliability slider to see how quickly end-to-end success rates collapse across workflows of increasing complexity."
+    source="Mathematical model; empirical benchmarks from METR (2025) and Gartner (2025)"
+>
+    <CompoundingError client:load />
+</FigureEmbed>
+
+Understanding what these systems can do — and where they break — requires one more distinction that determines what you actually pay for.
+
+### Training versus inference
+
+<ComparisonBox
+    leftTitle="Training"
+    rightTitle="Inference"
+    rows={[
+        { label: "What it does", left: "Creates the model", right: "Uses the model" },
+        { label: "Who pays", left: "Model developer (OpenAI, Google, Meta)", right: "The enterprise — every interaction" },
+        { label: "Cost", left: "$100M–$1B+", right: "Per-token pricing; scales with usage" },
+        { label: "Share of compute", left: "~10–20% of global AI compute", right: "~80–90% of global AI compute" },
+        { label: "Key insight", left: "Someone else's cost (for most enterprises)", right: "Your cost — and the source of most budget surprises" },
+    ]}
+/>
+
+The gap between the per-token price in a vendor's pricing table and the total cost of running an AI system in production is where most budget surprises originate.
+
+---
+
+## 3. What AI can actually do
+
+If you are evaluating an AI investment, the starting question is not what the technology could do in theory. It is what the controlled evidence shows it can do in practice, in conditions that resemble an actual organisation.
+
+The evidence base is stronger than most people realise — and more bounded than most vendor pitches suggest.
+
+### The controlled studies
+
+Six controlled or quasi-controlled studies form the core of current knowledge about AI's real-world productivity impact.
+
+<EvidenceTable
+    title="The evidence base: six controlled studies, 11,000+ workers"
+    studies={[
+        { author: "Brynjolfsson, Li & Raymond", year: 2025, n: "5,172", journal: "QJE", domain: "Customer support", finding: "Largest real-world AI productivity study. Least experienced workers gained most (~30%). Most experienced: marginal speed, slight quality decline.", effect: "+15–30%", positive: true },
+        { author: "Noy & Zhang", year: 2023, n: "453", journal: "Science", domain: "Professional writing", finding: "Task time fell 40%. Quality rose 18%. Productivity distribution compressed: AI helped lower-ability workers most.", effect: "+18% quality", positive: true },
+        { author: "Dell'Acqua et al.", year: 2023, n: "758", journal: "HBS", domain: "BCG consulting", finding: "Inside AI's frontier: +12.2% tasks, +25% speed, +40% quality. Outside it: −19pp accuracy. The jagged frontier.", effect: "+40% / −19pp", positive: true },
+        { author: "Peng et al.", year: 2023, n: "95", journal: "arXiv", domain: "Software dev", finding: "55.8% faster completion with GitHub Copilot. Small sample, narrow task.", effect: "+56% speed", positive: true },
+        { author: "Cui, Demirer et al.", year: 2025, n: "4,867", journal: "SSRN", domain: "Software dev", finding: "+26% completed pull requests/week across Microsoft, Accenture, Fortune 100. Quality explicitly unmeasured — only quantity.", effect: "+13–26%", positive: true },
+        { author: "METR", year: 2025, n: "16", journal: "RCT", domain: "Software dev", finding: "Experienced devs 19% slower with AI — while perceiving themselves 24% faster. 39pp perception-reality gap.", effect: "−19%", positive: false },
+    ]}
+    source="Effect sizes approximate where studies report ranges."
+/>
+
+### The consistent finding
+
+Across all studies, one result appears every time.
+
+<Callout type="evidence" title="AI compresses the skill distribution">
+    AI disproportionately helps less experienced workers. Brynjolfsson's least experienced agents saw roughly double the improvement of the most experienced. Noy and Zhang's lower-ability writers saw the largest gains. An OECD review (July 2025) confirmed the pattern across settings. AI is an equaliser, not an amplifier.
+</Callout>
+
+<Callout type="insight" title="The Solow paradox, 2026 edition">
+    Economist Robert Solow observed in 1987 that "you can see the computer age everywhere but in the productivity statistics." Task-level AI gains have not yet materialised in aggregate economic data. The gap between "AI helps individuals on specific tasks" and "AI makes organisations measurably more profitable" is real, and the evidence in this primer suggests the explanation is the same one that applied to electrification: the gains cannot materialise until the operating environment is redesigned to accommodate them.
+</Callout>
+
+### The jagged frontier
+
+Dell'Acqua's study with 758 BCG consultants documented something prior research had not shown so precisely. Consultants received two types of tasks: some within GPT-4's capability boundary, some just outside it.
+
+<StatRow stats={[
+    { value: "+40%", label: "higher quality inside the frontier", accent: "teal" },
+    { value: "−19pp", label: "accuracy outside the frontier", accent: "coral" },
+]} source="Dell'Acqua et al., Harvard Business School, 2023 (N=758 BCG consultants)" />
+
+On tasks where AI was not competent, having access to it made skilled professionals worse than having no AI at all.
+
+<FigureEmbed
+    number={4}
+    title="The Jagged Frontier"
+    description="AI performance impact across 26 tasks from six controlled studies. Above the baseline, AI improved outcomes. Below it, AI made things measurably worse. The boundary is irregular and difficult to predict in advance."
+    source="Brynjolfsson et al. (QJE 2025); Noy & Zhang (Science 2023); Dell'Acqua et al. (HBS 2023); Peng et al. (arXiv 2023); Cui et al. (SSRN 2025); METR (2025)"
+>
+    <JaggedFrontier client:load />
+</FigureEmbed>
+
+Dell'Acqua and his co-authors called this the "jagged technological frontier." The boundary between what AI can and cannot do is not a clean line. It is irregular, unintuitive, and difficult to predict in advance. A model might produce flawless legal research on contract interpretation and fabricate case law entirely in an adjacent domain.
+
+The finding has been independently corroborated. Joshua Gans published a formal economic model through the National Bureau of Economic Research (January 2026) demonstrating that scaling improves average quality without eliminating jaggedness. Zhou et al. (*Nature*, 2024) confirmed that larger models improve in most areas but become *less* reliable in others. Better models are still jagged.
+
+### When AI makes things worse
+
+It is not simply that AI fails to help outside its frontier. It actively degrades performance — through a human mechanism, not a technical one.
+
+Dell'Acqua's earlier research found that HR recruiters given access to high-quality AI (85% accuracy) performed *worse* than those given low-quality AI (75% accuracy). Higher apparent quality produced less scrutiny and more blind trust.
+
+<StatCallout
+    value="80% → 20%"
+    label="Accuracy drop among less experienced radiologists when AI predictions were incorrect. They followed the AI's wrong answer instead of their own training."
+    source="Systematic review, AI & Society (2025), 35 studies"
+    accent="coral"
+/>
+
+A study in *The Lancet Gastroenterology & Hepatology* (2025) documented an even more concerning pattern: after AI was introduced for colonoscopy assistance, adenoma detection rates in non-AI-assisted procedures dropped from 28.4 to 22.4 per cent. Clinicians who had been using AI became less attentive when performing procedures without it. The technology was creating a dependency that degraded baseline human capability.
+
+<Callout type="evidence" title="The benchmark gap">
+    SWE-bench evaluates AI on curated coding tasks: top scores of **80.9%**. SWE-Lancer uses real freelance tasks with monetary stakes: even the best models succeed only **26.2%** of the time. Same models. Different conditions. The gap measures the distance between a controlled evaluation and actual work.
+</Callout>
+
+---
+
+## 4. What it costs
+
+The gap between what AI costs on paper and what it costs in practice is where most budget overruns originate.
+
+### The technology stack
+
+Multiple sources converge on a five-layer architecture for enterprise AI. The critical insight is the gap between what vendors quote and what enterprises actually pay.
+
+<FigureEmbed
+    number={5}
+    title="The Enterprise AI Stack"
+    description="Five layers make up an enterprise AI system. Most vendor pricing covers only the model layer — roughly 15% of total cost. Reveal the full system to see where the other 85% goes."
+    source="BCG 10-20-70 framework; Gartner 2025; Capital One/Forrester (N=500)"
+>
+    <EnterpriseAIStack client:load />
+</FigureEmbed>
+
+The figure reveals the pattern: what vendors quote covers roughly one-fifth of the total system. The rest — data pipelines, integration, orchestration, and the change management that determines whether anyone actually uses the system — is invisible in most proposals.
+
+### Where the money goes
+
+<Callout type="insight" title="The 10-20-70 rule (BCG)">
+    Successful implementations allocate roughly 10% to algorithms and models, 20% to technology and data, and **70% to people, processes, and organisational change**. Organisations that fail typically invert this ratio.
+</Callout>
+
+The aggregate result: implementations typically cost 3–5× the advertised price once data preparation, integration, change management, and ongoing operations are included. The Benchmarkit/Mavvrik 2025 report (N=372) found that 85 per cent of organisations misestimate AI costs by more than 10 per cent, with 24 per cent missing forecasts by more than 50 per cent.
+
+<StatCallout
+    value="$200/mo → $10,000/mo"
+    label="A construction company's AI tool cost during development versus production, driven entirely by inference volume at scale. The pilot works. The pilot is cheap. The pilot is not the product."
+    accent="coral"
+/>
+
+Returning to the factory analogy: the motor is not the expensive part of electrification. Rewiring the building is.
+
+### Deployment models
+
+<FigureEmbed
+    number={6}
+    title="Deployment Model Comparator"
+    description="Four deployment models — cloud API, self-hosted open-source, fine-tuned, and purchased application — ranked by fit for different priority profiles. Select what matters most to see which model best fits your constraints."
+>
+    <DeploymentComparator client:load />
+</FigureEmbed>
+
+<ComparisonBox
+    leftTitle="Build / self-host"
+    rightTitle="Buy / cloud API"
+    rows={[
+        { label: "Cloud API", left: "—", right: "Zero upfront, linear per-token pricing. Trade-offs: data sovereignty, vendor lock-in." },
+        { label: "Self-hosted open-source", left: "$50K–$200K+ upfront. Full data sovereignty. Performance gap closed to 0.3pp (MMLU), 86% lower per-token cost.", right: "—" },
+        { label: "Fine-tuned models", left: "$10K–$100K+ per training run. Requires ML engineers and curated data.", right: "—" },
+        { label: "Purchased applications", left: "—", right: "76% of enterprise AI use cases now purchased (Menlo Ventures 2025). 3× success rate vs. internally built (MIT NANDA)." },
+    ]}
+    caption="The market has shifted toward buying. The emerging practice is hybrid: buy commodity AI for most use cases, build only where proprietary data creates an advantage."
+/>
+
+### Market dynamics
+
+<StatRow stats={[
+    { value: "280×", label: "cost reduction per token (2022–2024)", accent: "teal" },
+    { value: "31×", label: "workload volume growth", accent: "coral" },
+    { value: "10–30×", label: "more tokens per reasoning request", accent: "gold" },
+]} source="Stanford HAI AI Index 2025" />
+
+Per-unit costs are declining while aggregate spending accelerates — the economics are improving for well-defined, high-volume tasks using commodity models and remain expensive for frontier capabilities.
+
+---
+
+## 5. Why implementations fail
+
+The pattern that emerges from the evidence is counterintuitive. An organisation can have the right model, the right data, the right budget, and the right talent — and still fail. The RAND Corporation's 2024 peer-reviewed study found that four of the five top root causes are organisational, not technical. McKinsey's 2025 survey reinforces the point: of the 88 per cent of organisations using AI, roughly 1 per cent report being at a mature, scaled stage.
+
+The four cases that follow are not cautionary tales selected for shock value. They are the normal distribution of outcomes — and each illuminates a different structural dynamic that the evidence base predicts.
+
+### The readiness illusion: IBM Watson for Oncology
+
+IBM checked every readiness box. CEO-level sponsorship. More than $4 billion in total investment. Partnerships with Memorial Sloan Kettering and MD Anderson — two of the world's most prestigious oncology institutions. More than 2,000 dedicated employees.
+
+<FigureEmbed
+    number={7}
+    title="The Readiness Scorecard"
+    description="IBM Watson for Oncology scored green on every conventional readiness dimension — executive sponsorship, budget, talent, data, technology, market position. The outcome was red. Explore each dimension to see how strengths interacted to produce failure."
+>
+    <WatsonScorecard client:load />
+</FigureEmbed>
+
+The failures emerged not from any single dimension but from interactions between them.
+
+Watson's NLP, built for Jeopardy!-style factual retrieval, could not parse the ambiguity of medical text. When real clinical data proved too inconsistent for training, clinicians began creating synthetic cases — hypothetical patients designed to be clean and complete. Watson learned what doctors *thought should happen* rather than what *actually happened*. Training was performed by one or two physicians whose preferences became embedded in the system.
+
+IBM's aggressive marketing created pressure to deploy before the system was ready. Internal documents revealed that Watson had generated unsafe recommendations, including suggesting drugs with severe contraindications. The University of Texas audited the MD Anderson partnership and found $62 million spent before the project was cancelled.
+
+<StatCallout
+    value="$4B → ~$1B"
+    label="IBM's total Watson investment versus approximate sale price in 2022 — roughly a quarter of cumulative spend. The MD Anderson partnership alone consumed $62M before cancellation."
+    source="IEEE Spectrum, STAT News, University of Texas audit"
+    accent="coral"
+/>
+
+<CaseConclusion>
+    Readiness is not additive. World-class talent combined with synthetic data produced biased training. A massive budget combined with an unrealistic timeline produced premature deployment. Strong individual dimensions interacted to produce weak outcomes.
+</CaseConclusion>
+
+### The integration blindspot: NHS England
+
+In 2023, NHS England launched a £21 million programme to deploy AI for chest diagnostics across 66 hospital trusts. The AI tools were commercially available, regulator-approved, and clinically validated.
+
+The AI worked. The integration did not.
+
+NHS trusts operate variable, ageing infrastructure. No two trusts had identical systems. Procurement ran four to ten months longer than planned. Each trust required separate governance approvals. Even when technically installed, the tools needed to fit into actual workflows: where do AI flags appear? Who reviews them? What happens when the AI and the radiologist disagree?
+
+By June 2025, 23 of 66 trusts — more than a third — were still not using the tools in clinical practice. Where AI was deployed, radiologists reported higher levels of burnout due to added workflow complexity.
+
+<CaseConclusion>
+    The model is 10 to 20 per cent of the system. The integration layer between a working model and institutional reality is where most implementations break — and the layer most proposals omit.
+</CaseConclusion>
+
+### The scale distortion: Zillow Offers
+
+Zillow's Zestimate was, by any reasonable measure, a successful AI product. By 2021, it estimated home values within 2 per cent of selling price for on-market homes.
+
+In 2018, Zillow launched Zillow Offers: using the same algorithmic foundations to make cash offers, renovate, and resell. The leap was from *estimating* values — an informational function where errors are low-cost — to *transacting* on values, where errors mean owning depreciating assets.
+
+<FigureEmbed
+    number={8}
+    title="The Scale Transition"
+    description="The Zestimate and Zillow Offers used the same algorithmic foundations. The shift from informational to transactional introduced categorically different failure modes."
+>
+    <ZillowTransition client:load />
+</FigureEmbed>
+
+The problems at transactional scale were not amplified versions of problems from the informational product. They were qualitatively different. Overpaying was catastrophic. Sellers whose homes were overvalued disproportionately accepted offers, creating adversarial selection the informational product had never surfaced.
+
+Under competitive pressure, Zillow launched "Project Ketchup": using the Zestimate directly as cash offers, preventing pricing experts from modifying algorithmic valuations, raising bids to win deals. In November 2021, CEO Rich Barton announced the shutdown.
+
+<StatCallout
+    value="$48B → $16B"
+    label="Zillow's market capitalisation drop in nine months. Losses exceeded $500 million. Competitors using similar models weathered the same conditions. Their algorithms adjusted. Zillow's did not."
+    source="SEC filings, Stanford GSB, Harvard Business School"
+    accent="coral"
+/>
+
+<CaseConclusion>
+    POC success is an insufficient predictor of production success. Scale introduces categorically new failure modes that cannot be observed at pilot scale.
+</CaseConclusion>
+
+### The organisational immune response
+
+The fourth pattern is the hardest to document because it is the most diffuse. There is no $500 million write-down. There is a working AI system that nobody uses.
+
+BCG's Deborah Lovich describes the dynamic as "organ rejection": AI technically deployed but culturally refused. Leaders who frame AI purely as a productivity tool are essentially telling employees not to engage with it, because employees hear "productivity tool" as "tool that replaces what I do."
+
+<StatCallout
+    value="63%"
+    label="of organisations cite human factors as the primary challenge in AI implementation. Mid-level managers are the most resistant group — and the resistance is rational, not irrational."
+    source="Prosci 2025 (N=1,107); McKinsey 2025"
+    accent="slate"
+/>
+
+A Brisbane hospital study (*JMIR*, 2026) traced the pattern in clinical practice. Before implementation, radiologists expressed cautious willingness. During implementation, practical experience unsettled trust: false positives, inconsistent sensitivity, excessive outputs. Only 30 per cent currently use AI in routine workflows despite widespread availability.
+
+<CaseConclusion label="What it reveals">
+    The sequence: technology works → deployment occurs → passive resistance emerges through questioning outputs and continuing existing workflows → leadership provides passive support without active championing → adoption decays through gradual disuse, not dramatic failure → post-mortems misattribute the outcome to the technology.
+</CaseConclusion>
+
+<PulledQuote>
+    The factories that bolted electric motors onto steam-era layouts did not blame their layout. They blamed electricity.
+</PulledQuote>
+
+---
+
+## 6. Where it has worked — and what it cost
+
+The failure patterns above are the majority experience. But they are not the only experience. Roughly 6 per cent of organisations have closed the adoption-value gap. Understanding what they did differently — and what it actually cost them — matters more than cataloguing what went wrong.
+
+### Klarna: The full arc
+
+In early 2024, Swedish fintech Klarna launched an OpenAI-powered customer service assistant. The first-month results were extraordinary: 2.3 million conversations handled, two-thirds of all customer service interactions. Resolution time dropped from 11 minutes to under 2 minutes. Repeat contacts fell 25 per cent. Klarna projected a $40 million profit improvement for 2024 and publicly described the system as doing the work of 700 full-time employees.
+
+The numbers were real. Klarna had, by any standard metric, achieved one of the most successful enterprise AI deployments on record.
+
+What followed is the most instructive case in this primer — not because it failed, but because it succeeded, overcorrected, failed partially, and then succeeded again differently. The arc is worth following in full.
+
+<FigureEmbed
+    number={9}
+    title="The Klarna Arc"
+    description="Four phases of Klarna's AI deployment — from record-breaking launch through overcorrection and quality crisis to hybrid recalibration. Step through each phase to follow the full arc."
+    source="Klarna Q1 and Q3 2025 earnings reports; CX Dive; Forrester analysis"
+>
+    <KlarnaArc client:load />
+</FigureEmbed>
+
+By mid-2025, CEO Sebastian Siemiatkowski acknowledged what customers had been experiencing: "Cost was a predominant evaluation factor" in organising support, and the result was "lower quality." Klarna had overpivoted — optimising for cost containment without adequately investing in the cases where human judgment was irreplaceable. Complex disputes, fraud investigations, and emotionally charged interactions were being routed to AI systems that could not handle them well. Customer satisfaction on simple queries remained strong, but the long tail of difficult cases eroded trust.
+
+Klarna's correction was instructive. Rather than retreating from AI, the company recalibrated: rehiring human agents for complex interactions, building a hybrid model where AI handles routine high-volume queries and humans handle everything requiring judgment, empathy, or nuanced decision-making. By Q3 2025, the AI assistant was handling the equivalent of 853 full-time employees' workload — *more* than the original 700 — while human agents handled escalations that AI could not.
+
+<StatRow stats={[
+    { value: "$0.32 → $0.19", label: "cost per transaction (40% reduction)", accent: "teal" },
+    { value: "11 min → <2 min", label: "resolution time", accent: "teal" },
+    { value: "~67%", label: "of all chats handled by AI", accent: "slate" },
+    { value: "+152%", label: "revenue per employee since Q1 2023", accent: "teal" },
+]} source="Klarna Q1 and Q3 2025 earnings reports" />
+
+<CaseConclusion>
+    Klarna is the jagged frontier at the organisational level. AI was spectacularly effective within its capability boundary and actively harmful outside it. The value was not in the technology — it was in the willingness to redesign the operating model twice.
+</CaseConclusion>
+
+### What the high performers share
+
+McKinsey's 2025 analysis of the roughly 6 per cent of organisations capturing significant AI value identified six consistent structural differences — and none of them are about the technology itself.
+
+<FigureEmbed
+    number={10}
+    title="What the ~6% Do Differently"
+    description="Six structural dimensions where high-performing organisations diverge from the rest, drawn from four independent research programmes. The pattern is clear: the gap is organisational, not technological."
+    source="McKinsey 2025; BCG 2025; MIT NANDA; Wharton/GBK 2025"
+>
+    <HighPerformerPatterns client:load />
+</FigureEmbed>
+
+Midsized firms ($250M–$2B) report quicker ROI realisation than large enterprises ($2B+), potentially because they face less integration complexity.
+
+These patterns are correlational. High-performing organisations may be better-resourced across multiple dimensions. But the more modest and more useful claim holds: the *absence* of these patterns — no data readiness, no executive sponsorship, no workflow redesign, no realistic timelines — is a reliable predictor of failure.
+
+The question is why these patterns cluster. The answer lies in the system underneath.
+
+---
+
+## 7. The system underneath
+
+The four failure patterns from Section 5 are not independent. They are aspects of the same phenomenon: AI components interacting with organisational systems in ways that neither component-level evaluation nor conventional project management anticipates.
+
+### Four dynamics, one system
+
+<FigureEmbed
+    number={11}
+    title="The Failure Cascade"
+    description="Six interconnected system nodes — data quality, integration, executive sponsorship, timeline, change management, and model — form the dynamics that drive AI implementation outcomes. Compress a timeline or cut change management funding, and watch cascading degradation propagate through the entire system."
+    source="Break it Down editorial synthesis of RAND (2024), McKinsey (2025), BCG (2025), MIT CISR (N=721)"
+>
+    <FailureCascade client:load />
+</FigureEmbed>
+
+**The readiness paradox.** Organisations that score well on individual readiness dimensions can still fail. Cisco's survey (N=7,985): 88 per cent adoption, only 13 per cent fully ready. MIT CISR's maturity model (N=721): the 7 per cent at the most advanced stage outperformed their industry by 17.1 percentage points on growth and 10.4 on profit; the 28 per cent at the earliest stage underperformed by 12.6 on growth and 9.6 on profit.
+
+<StatCallout
+    value="30pp"
+    label="Performance spread between the most and least mature AI organisations — 17.1pp outperformance at the top versus 12.6pp underperformance at the bottom."
+    source="MIT CISR Enterprise AI Maturity Model (N=721)"
+    accent="slate"
+/>
+
+**The integration gap.** The translation layer between AI capability and business process is where most implementations break. Integration adds 30–50 per cent beyond initial estimates. Gartner documents 500–1,000 per cent cost estimation errors at the pilot-to-production step. Capital One/Forrester (N=500): 73 per cent cite data quality as the primary barrier.
+
+**The scale distortion.** Scale introduces failure modes invisible at pilot. S&P Global: the average organisation scrapped 46 per cent of POCs before production. Deloitte: realistic ROI timelines are 2–4 years against typical executive expectations of 7–12 months. The mismatch may itself drive premature cancellation — organisations declaring failure on initiatives that simply have not had time to mature.
+
+**The organisational immune response.** BCG's 10-20-70 finding quantifies the mechanism: 70 per cent of value comes from business process transformation. RAND: four of five failure root causes are organisational. McKinsey: leadership indecision is a stronger predictor of failure than technology limitations. Improving the technology does not solve the organisational problem.
+
+### How they cascade
+
+Poor data quality reduces model accuracy → reduces user trust → reduces adoption → prevents ROI demonstration → causes sponsorship to withdraw → kills the project.
+
+A compressed timeline forces teams to skip integration testing → surfaces as production errors → erodes confidence.
+
+An underfunded change management programme produces a technically sound system that nobody uses → generating no data to improve with.
+
+Addressing one dynamic without addressing the others moves the failure point downstream. It does not eliminate it.
+
+### Where organisations stand
+
+The MIT CISR maturity model maps where organisations fall across this landscape — and quantifies what each stage costs in performance.
+
+<FigureEmbed
+    number={12}
+    title="The AI Maturity Landscape"
+    description="Four stages of AI maturity based on MIT CISR's model (N=721), with risk patterns, performance benchmarks, and investment priorities for each stage."
+    source="MIT CISR Enterprise AI Maturity Model (N=721)"
+>
+    <MaturityLandscape client:load />
+</FigureEmbed>
+
+Every successful implementation and every failed implementation reviewed in this primer points to the same set of foundations: data infrastructure, integration architecture, and organisational capability. These are the wiring of the new factory. The models are the motors — important, but interchangeable.
+
+<PulledQuote>
+    Motors depreciate. Wiring compounds.
+</PulledQuote>
+
+---
+
+## 8. What to invest in
+
+The evidence in the previous seven sections points to a single structural conclusion. It is not about which model to buy.
+
+### The investment pattern
+
+<FigureEmbed
+    number={13}
+    title="Where the Investment Goes"
+    description="How high-performing organisations allocate their AI budgets versus the typical failure pattern. The divergence is stark: the 6% invest in foundations first; the rest over-index on the model."
+    source="McKinsey 2025; BCG 10-20-70; MIT NANDA"
+>
+    <InvestmentAllocation client:load />
+</FigureEmbed>
+
+The model layer changes every three to six months. Fine-tuned models require retraining as data shifts. Benchmark rankings reshuffle quarterly. This is the component that depreciates fastest.
+
+A well-designed data pipeline serves the current model and the next one. A robust integration architecture accommodates model upgrades without rebuilding. An organisation that has learned to manage technology-driven change can absorb whatever comes after the current generation.
+
+<Callout type="insight" title="The investment question, restated">
+    If your AI budget only accounts for the model, the implementation is underfunded by design. Data preparation, integration, change management, and ongoing maintenance are not optional additions. They are the majority of the investment and the majority of what determines whether it produces a return.
+</Callout>
+
+### Build, buy, or partner
+
+The market has shifted toward buying.
+
+<StatRow stats={[
+    { value: "3×", label: "success rate of purchased vs. built solutions", accent: "teal" },
+    { value: "0.3pp", label: "performance gap (open-source vs. proprietary)", accent: "slate" },
+    { value: "86%", label: "lower cost per token (open-source)", accent: "teal" },
+]} source="MIT NANDA; Stanford HAI AI Index 2025" />
+
+The emerging practice is hybrid: buy commodity AI for the majority of use cases, build or self-host only where proprietary data or processes create an advantage purchased tools cannot replicate.
+
+### Three starting points
+
+<ActionCards actions={[
+    {
+        title: "Audit the data estate",
+        body: "63% of organisations either lack or are unsure about adequate data management for AI. 96% that attempted AI found their training data insufficient. Data readiness appears in 100% of validated readiness frameworks. This is the foundation that makes every other investment viable.",
+        source: "Gartner 2025"
+    },
+    {
+        title: "Scope to one problem",
+        body: "The impulse to pursue multiple AI initiatives in parallel correlates with failure, not ambition. Mid-market top performers achieved 90-day pilot-to-production cycles by selecting one pain point with clear success criteria.",
+        source: "MIT NANDA; BCG 2025"
+    },
+    {
+        title: "Budget for the full system, not the model",
+        body: "Apply BCG's 10-20-70 rule as a diagnostic. If more than 30% of the budget is allocated to models and tools, compare that against the documented failure patterns. The model is the most exciting line item and the least durable investment.",
+        source: "BCG 2017–2025"
+    },
+]} />
+
+---
+
+## Closing
+
+The organisations that electrified successfully in the early twentieth century did not do so by buying better motors. They did so by redesigning the factory: the physical layout, the workflow, the organisational structure, the skills of the workforce. The motor mattered. It was necessary. But it was the cheapest and most replaceable component in the system.
+
+The evidence in this primer, drawn from controlled studies spanning more than 11,000 workers, case analyses of billion-dollar failures, and surveys covering thousands of organisations, points to the same structural logic.
+
+AI works. It works reliably and measurably at the task level. The organisations that have captured value from it — roughly 6 per cent — did so not by finding a better model but by building the system around it: the data infrastructure, the integration layer, the change management investment, the realistic timelines. The 94 per cent that have not captured value are, for the most part, bolting motors onto steam-powered floors.
+
+The motors will keep getting better. They will get better on a timeline measured in months. The question that determines whether that improvement converts to value is not which motor to buy. It is whether the factory is ready for it.
+
+---
+
+## Methodology and sources
+
+This primer draws on peer-reviewed research, government studies, SEC filings, and large-scale industry surveys with disclosed methodology.
+
+**Peer-reviewed and academic sources.** Brynjolfsson, Li & Raymond (*Quarterly Journal of Economics*, 2025, N=5,172); Noy & Zhang (*Science*, 2023, N=453); Dell'Acqua et al. (Harvard Business School Working Paper, 2023, N=758); Peng et al. (arXiv, 2023, N=95); Cui, Demirer et al. (SSRN, 2025, N=4,867); METR (2025, N=16); Zhou et al. (*Nature*, 2024); Magesh et al. (*Journal of Empirical Legal Studies*, 2025); Budzyń et al. (*The Lancet Gastroenterology & Hepatology*, 2025); Gans (NBER Working Paper, 2026); Ramsay et al. (*The Lancet eClinicalMedicine*, 2025); RAND Corporation (2024, N=65).
+
+**Industry surveys.** McKinsey Global AI Survey 2025 (N=1,491); Wharton/GBK Collective 2025; BCG/MIT Sloan Management Review 2024 (N=1,000) and 2025 (N=1,250); Cisco AI Readiness Index 2025 (N=7,985); Deloitte 2025 (N=3,235); S&P Global 2025 (N=1,000+); Prosci 2025 (N=1,107); Menlo Ventures 2025 (N=150); Benchmarkit/Mavvrik 2025 (N=372); MIT CISR Enterprise AI Maturity Model (N=721).
+
+**Primary financial data.** SEC filings for Alphabet, Microsoft, Meta, Amazon, and Nvidia. Klarna Q1 and Q3 2025 earnings reports.
+
+**Case sources.** IBM Watson for Oncology: IEEE Spectrum, STAT News (internal documents), University of Texas audit. NHS AI Diagnostics Fund: *The Lancet eClinicalMedicine* (UCL-led evaluation). Zillow Offers: Stanford GSB, Harvard Business School, SEC filings. Klarna: company press releases, CX Dive, Forrester analysis. Organisational resistance: USAII, BCG, McKinsey, Prosci, JMIR.
+
+**Analytical framework.** The four dynamics (readiness paradox, integration gap, scale distortion, organisational immune response) and the cascade model are editorial synthesis, grounded in the evidence patterns above. The electrification analogy draws on Paul David's "The Dynamo and the Computer" (*American Economic Review*, 1990). The systems framing is this primer's analytical contribution, not a claim that research has proven the cascade mechanics.
+
+**Evidence standards.** Where commonly cited statistics cannot be traced to published research — specifically the "87% failure" figure (2019 conference panel, no study) and the "85% failure" figure (2017 Gartner social media, Hadoop-era analytics) — provenance is noted explicitly.
+
+
+
+

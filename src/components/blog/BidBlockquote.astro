@@ -1,0 +1,16 @@
+---
+/**
+ * BidBlockquote — Global blockquote override for Break it Down articles.
+ * Applied automatically at the layout level via <Content components={{ blockquote: BidBlockquote }} />.
+ * Styles all markdown > blockquotes with the Break it Down editorial treatment.
+ *
+ * This handles standard markdown blockquotes. For typed callouts (insight, myth, warning),
+ * use the explicit <Callout> component instead.
+ */
+---
+
+<blockquote class="bid-blockquote my-8 py-5 px-7 border-l-4 border-bid-teal/30 bg-bid-teal/[0.03] not-prose">
+  <div class="text-sm sm:text-base font-serif text-bid-text-secondary leading-relaxed [&>p]:mb-3 [&>p:last-child]:mb-0 [&>strong]:text-bid-text [&>strong]:font-semibold [&>p>strong]:text-bid-text [&>p>strong]:font-semibold">
+    <slot />
+  </div>
+</blockquote>

@@ -1,0 +1,100 @@
+---
+/**
+ * ComparisonBox — Side-by-side comparison of two concepts.
+ * Used when the article contrasts two approaches, models, or outcomes.
+ *
+ * Usage in MDX:
+ *   import ComparisonBox from '@components/bid/ComparisonBox.astro'
+ *
+ *   <ComparisonBox
+ *     leftTitle="RAG"
+ *     rightTitle="Fine-Tuning"
+ *     rows={[
+ *       { label: "How it works", left: "Retrieves documents at query time", right: "Retrains model on your data" },
+ *       { label: "Cost", left: "Moderate", right: "High ($10K–$100K+ per run)" },
+ *       { label: "Best for", left: "Grounding in current data", right: "Domain-specific language" },
+ *     ]}
+ *   />
+ *
+ * For contrasting outcomes (success vs. failure), use accent="contrast" for red/green treatment.
+ */
+
+interface Row {
+  label: string;
+  left: string;
+  right: string;
+}
+
+interface Props {
+  leftTitle: string;
+  rightTitle: string;
+  rows: Row[];
+  accent?: "neutral" | "contrast";
+  caption?: string;
+}
+
+const { leftTitle, rightTitle, rows, accent = "neutral", caption } = Astro.props;
+
+const leftAccent = accent === "contrast" ? "text-bid-teal" : "text-bid-slate";
+const rightAccent = accent === "contrast" ? "text-bid-coral" : "text-bid-slate";
+const leftBorder = accent === "contrast" ? "border-bid-teal/30" : "border-bid-border";
+const rightBorder = accent === "contrast" ? "border-bid-coral/30" : "border-bid-border";
+---
+
+<div class="bid-comparison-box my-8 not-prose">
+  {/* Header */}
+  <div class="grid grid-cols-[140px_1fr_1fr] sm:grid-cols-[180px_1fr_1fr] border border-bid-border bg-bid-surface">
+    <div class="py-3 px-4 border-r border-bid-border">
+      <span class="text-[10px] font-sans font-medium tracking-[0.1em] uppercase text-bid-text-tertiary">
+        Dimension
+      </span>
+    </div>
+    <div class:list={["py-3 px-4 border-r", leftBorder]}>
+      <span class:list={["text-sm font-sans font-medium", leftAccent]}>
+        {leftTitle}
+      </span>
+    </div>
+    <div class="py-3 px-4">
+      <span class:list={["text-sm font-sans font-medium", rightAccent]}>
+        {rightTitle}
+      </span>
+    </div>
+
+    {/* Rows */}
+    {rows.map((row, i) => (
+      <>
+        <div class:list={[
+          "py-3 px-4 border-r border-t border-bid-border",
+          i % 2 === 0 ? "bg-bid-bg" : "bg-bid-surface",
+        ]}>
+          <span class="text-xs font-sans font-medium text-bid-text-secondary">
+            {row.label}
+          </span>
+        </div>
+        <div class:list={[
+          "py-3 px-4 border-r border-t",
+          leftBorder,
+          i % 2 === 0 ? "bg-bid-bg" : "bg-bid-surface",
+        ]}>
+          <span class="text-sm font-serif text-bid-text-secondary leading-relaxed">
+            {row.left}
+          </span>
+        </div>
+        <div class:list={[
+          "py-3 px-4 border-t border-bid-border",
+          i % 2 === 0 ? "bg-bid-bg" : "bg-bid-surface",
+        ]}>
+          <span class="text-sm font-serif text-bid-text-secondary leading-relaxed">
+            {row.right}
+          </span>
+        </div>
+      </>
+    ))}
+  </div>
+
+  {caption && (
+    <p class="mt-2 text-xs text-bid-text-tertiary font-sans">
+      {caption}
+    </p>
+  )}
+</div>

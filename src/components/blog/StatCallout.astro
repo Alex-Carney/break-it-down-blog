@@ -1,0 +1,68 @@
+---
+/**
+ * StatCallout — Visually prominent pulled statistic.
+ * Used for key numbers that should be scannable by executives skimming the article.
+ *
+ * Usage in MDX:
+ *   import StatCallout from '@components/bid/StatCallout.astro'
+ *   <StatCallout value="42%" label="of companies abandoned most AI initiatives in 2025" source="S&P Global 2025" />
+ *
+ * Props:
+ *   value    — the number/stat (required)
+ *   label    — short description (required)
+ *   source   — attribution (optional)
+ *   context  — additional context line (optional)
+ *   accent   — color variant: "coral" | "teal" | "slate" | "gold" (default: "coral")
+ */
+
+interface Props {
+  value: string;
+  label: string;
+  source?: string;
+  context?: string;
+  accent?: "coral" | "teal" | "slate" | "gold";
+}
+
+const { value, label, source, context, accent = "coral" } = Astro.props;
+
+const accentColors = {
+  coral:  { text: "text-bid-coral",  border: "border-bid-coral/20",  bg: "bg-bid-coral/5" },
+  teal:   { text: "text-bid-teal",   border: "border-bid-teal/20",   bg: "bg-bid-teal/5" },
+  slate:  { text: "text-bid-slate",  border: "border-bid-slate/20",  bg: "bg-bid-slate/5" },
+  gold:   { text: "text-bid-gold",   border: "border-bid-gold/20",   bg: "bg-bid-gold/5" },
+};
+
+const colors = accentColors[accent];
+---
+
+<aside class:list={[
+  "bid-stat-callout",
+  "my-8 py-6 px-8",
+  "border-l-4",
+  colors.border,
+  colors.bg,
+  "not-prose",
+]}>
+  <div class:list={[
+    "bid-stat-value",
+    "font-light tracking-tight leading-none",
+    "text-4xl sm:text-5xl",
+    colors.text,
+    "font-sans",
+  ]}>
+    {value}
+  </div>
+  <p class="mt-3 text-base text-bid-text leading-snug font-serif">
+    {label}
+  </p>
+  {context && (
+    <p class="mt-2 text-sm text-bid-text-secondary leading-relaxed font-serif italic">
+      {context}
+    </p>
+  )}
+  {source && (
+    <p class="mt-3 text-xs text-bid-text-tertiary font-sans tracking-wide uppercase">
+      {source}
+    </p>
+  )}
+</aside>

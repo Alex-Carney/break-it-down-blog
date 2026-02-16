@@ -1,0 +1,56 @@
+---
+/**
+ * ActionCards — Numbered action items with visual prominence.
+ * Used for "Three starting points" or "What to do next" sections.
+ *
+ * Usage in MDX:
+ *   import ActionCards from '@components/bid/ActionCards.astro'
+ *
+ *   <ActionCards actions={[
+ *     { title: "Audit the data estate", body: "63% of organisations lack adequate data management for AI." },
+ *     { title: "Scope to one problem", body: "MIT NANDA: 90-day pilot-to-production by selecting one pain point." },
+ *     { title: "Budget for the full system", body: "Apply BCG's 10-20-70 rule as a diagnostic." },
+ *   ]} />
+ */
+
+interface Action {
+  title: string;
+  body: string;
+  stat?: string;
+  source?: string;
+}
+
+interface Props {
+  actions: Action[];
+}
+
+const { actions } = Astro.props;
+---
+
+<div class="bid-action-cards my-8 not-prose grid gap-4 sm:grid-cols-1">
+  {actions.map((action, i) => (
+    <div class="bg-bid-surface border border-bid-border p-6 flex gap-5">
+      <div class="flex-shrink-0 w-9 h-9 rounded-full bg-bid-slate flex items-center justify-center">
+        <span class="text-sm font-sans font-medium text-white">{i + 1}</span>
+      </div>
+      <div class="flex-1 min-w-0">
+        <h4 class="text-base font-serif font-normal text-bid-text leading-snug mb-2">
+          {action.title}
+        </h4>
+        <p class="text-sm font-serif text-bid-text-secondary leading-relaxed">
+          {action.body}
+        </p>
+        {action.stat && (
+          <p class="mt-2 text-xs font-sans text-bid-teal font-medium">
+            {action.stat}
+          </p>
+        )}
+        {action.source && (
+          <p class="mt-1 text-[10px] font-sans text-bid-text-tertiary uppercase tracking-wide">
+            {action.source}
+          </p>
+        )}
+      </div>
+    </div>
+  ))}
+</div>

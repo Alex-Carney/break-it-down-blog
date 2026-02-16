@@ -1,0 +1,67 @@
+---
+/**
+ * StatRow — Horizontal row of 2-4 key statistics.
+ * Used when multiple numbers should be compared at a glance.
+ *
+ * Usage in MDX:
+ *   import StatRow from '@components/bid/StatRow.astro'
+ *
+ *   <StatRow stats={[
+ *     { value: "70–80%", label: "AI failure range", accent: "coral" },
+ *     { value: "40–50%", label: "traditional IT failure", accent: "muted" },
+ *     { value: "~2×", label: "higher than baseline", accent: "slate" },
+ *   ]} />
+ */
+
+interface Stat {
+  value: string;
+  label: string;
+  accent?: "coral" | "teal" | "slate" | "gold" | "muted";
+}
+
+interface Props {
+  stats: Stat[];
+  source?: string;
+}
+
+const { stats, source } = Astro.props;
+
+const accentMap = {
+  coral: "text-bid-coral",
+  teal: "text-bid-teal",
+  slate: "text-bid-slate",
+  gold: "text-bid-gold",
+  muted: "text-bid-text-tertiary",
+};
+---
+
+<div class="bid-stat-row my-8 not-prose">
+  <div class="bg-bid-surface border border-bid-border">
+    <div class:list={[
+      "grid gap-0",
+      stats.length === 2 ? "grid-cols-2" : stats.length === 3 ? "grid-cols-3" : "grid-cols-2 sm:grid-cols-4",
+    ]}>
+      {stats.map((stat, i) => (
+        <div class:list={[
+          "py-5 px-6 text-center",
+          i > 0 ? "border-l border-bid-border" : "",
+        ]}>
+          <div class:list={[
+            "text-2xl sm:text-3xl font-light font-sans tracking-tight leading-none",
+            accentMap[stat.accent || "slate"],
+          ]}>
+            {stat.value}
+          </div>
+          <div class="mt-2 text-xs text-bid-text-secondary font-serif leading-snug">
+            {stat.label}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+  {source && (
+    <p class="mt-2 text-xs text-bid-text-tertiary font-sans">
+      {source}
+    </p>
+  )}
+</div>

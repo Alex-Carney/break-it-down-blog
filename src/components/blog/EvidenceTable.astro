@@ -1,0 +1,108 @@
+---
+/**
+ * EvidenceTable — Formatted table of research evidence.
+ * Used to present multiple studies in a scannable, comparable format.
+ * More structured than a raw markdown table — includes visual weight for N and effect sizes.
+ *
+ * Usage in MDX:
+ *   import EvidenceTable from '@components/bid/EvidenceTable.astro'
+ *
+ *   <EvidenceTable
+ *     title="The evidence base: six controlled studies"
+ *     studies={[
+ *       { author: "Brynjolfsson et al.", year: 2025, n: "5,172", journal: "QJE", domain: "Customer support", finding: "Largest real-world AI study", effect: "+15–30%", positive: true },
+ *     ]}
+ *   />
+ */
+
+interface Study {
+  author: string;
+  year: number;
+  n: string;
+  journal?: string;
+  domain: string;
+  finding: string;
+  effect: string;
+  positive: boolean;
+}
+
+interface Props {
+  title?: string;
+  subtitle?: string;
+  studies: Study[];
+  source?: string;
+}
+
+const { title, subtitle, studies, source } = Astro.props;
+---
+
+<div class="bid-evidence-table my-8 not-prose">
+  {title && (
+    <div class="mb-4">
+      <p class="text-[10px] font-sans font-medium tracking-[0.14em] uppercase text-bid-text-tertiary mb-1">
+        EVIDENCE
+      </p>
+      <h4 class="text-base font-serif font-normal text-bid-text">
+        {title}
+      </h4>
+      {subtitle && (
+        <p class="text-sm text-bid-text-secondary font-serif mt-1">{subtitle}</p>
+      )}
+    </div>
+  )}
+
+  <div class="border border-bid-border overflow-x-auto">
+    <table class="w-full text-left">
+      <thead>
+        <tr class="bg-bid-slate/[0.04]">
+          <th class="py-3 px-4 text-[10px] font-sans font-medium tracking-[0.08em] uppercase text-bid-text-tertiary border-b border-bid-border">Study</th>
+          <th class="py-3 px-3 text-[10px] font-sans font-medium tracking-[0.08em] uppercase text-bid-text-tertiary border-b border-bid-border text-right">N</th>
+          <th class="py-3 px-4 text-[10px] font-sans font-medium tracking-[0.08em] uppercase text-bid-text-tertiary border-b border-bid-border">Domain</th>
+          <th class="py-3 px-4 text-[10px] font-sans font-medium tracking-[0.08em] uppercase text-bid-text-tertiary border-b border-bid-border">Key finding</th>
+          <th class="py-3 px-4 text-[10px] font-sans font-medium tracking-[0.08em] uppercase text-bid-text-tertiary border-b border-bid-border text-right">Effect</th>
+        </tr>
+      </thead>
+      <tbody>
+        {studies.map((study, i) => (
+          <tr class:list={[i % 2 === 0 ? "bg-bid-surface" : "bg-bid-bg"]}>
+            <td class="py-3 px-4 border-b border-bid-border align-top">
+              <span class="text-sm font-sans font-medium text-bid-text">{study.author}</span>
+              <br />
+              <span class="text-[10px] font-sans text-bid-text-tertiary">
+                {study.year}{study.journal ? ` · ${study.journal}` : ""}
+              </span>
+            </td>
+            <td class="py-3 px-3 border-b border-bid-border text-right align-top">
+              <span class:list={[
+                "text-sm font-sans font-medium",
+                parseInt(study.n.replace(/,/g, "")) >= 1000 ? "text-bid-text" : "text-bid-text-tertiary",
+              ]}>
+                {study.n}
+              </span>
+            </td>
+            <td class="py-3 px-4 border-b border-bid-border align-top">
+              <span class="text-sm font-serif text-bid-text-secondary">{study.domain}</span>
+            </td>
+            <td class="py-3 px-4 border-b border-bid-border align-top">
+              <span class="text-sm font-serif text-bid-text-secondary leading-relaxed">{study.finding}</span>
+            </td>
+            <td class="py-3 px-4 border-b border-bid-border text-right align-top">
+              <span class:list={[
+                "text-sm font-sans font-semibold",
+                study.positive ? "text-bid-positive" : "text-bid-negative",
+              ]}>
+                {study.effect}
+              </span>
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+
+  {source && (
+    <p class="mt-2 text-[10px] text-bid-text-tertiary font-sans leading-relaxed">
+      {source}
+    </p>
+  )}
+</div>

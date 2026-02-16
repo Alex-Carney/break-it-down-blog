@@ -1,0 +1,100 @@
+---
+/**
+ * Callout — Multi-variant callout box for editorial content.
+ * Replaces the generic blockquote with purpose-specific visual treatments.
+ *
+ * Usage in MDX:
+ *   import Callout from '@components/bid/Callout.astro'
+ *
+ *   <Callout type="insight" title="The Solow paradox, 2026 edition">
+ *     Body text here. Supports **markdown-like** formatting via slots.
+ *   </Callout>
+ *
+ *   <Callout type="myth" title="Myth vs. evidence">
+ *     Content debunking a common claim.
+ *   </Callout>
+ *
+ * Variants:
+ *   insight    — Key analytical finding (teal left border, light bg)
+ *   myth       — Debunking a misconception (coral, strikethrough aesthetic)
+ *   warning    — Risk or caution (gold/warm)
+ *   definition — Term explanation (slate, clean)
+ *   evidence   — Research finding with source emphasis (teal, data-forward)
+ */
+
+interface Props {
+  type?: "insight" | "myth" | "warning" | "definition" | "evidence";
+  title?: string;
+}
+
+const { type = "insight", title } = Astro.props;
+
+const variants = {
+  insight: {
+    border: "border-bid-teal",
+    bg: "bg-bid-teal/5",
+    titleColor: "text-bid-teal",
+    icon: "◆",
+    label: "KEY FINDING",
+  },
+  myth: {
+    border: "border-bid-coral",
+    bg: "bg-bid-coral/5",
+    titleColor: "text-bid-coral",
+    icon: "✕",
+    label: "MYTH VS. EVIDENCE",
+  },
+  warning: {
+    border: "border-bid-warm",
+    bg: "bg-bid-warm/5",
+    titleColor: "text-bid-warm",
+    icon: "△",
+    label: "CAUTION",
+  },
+  definition: {
+    border: "border-bid-slate",
+    bg: "bg-bid-slate/5",
+    titleColor: "text-bid-slate",
+    icon: "◇",
+    label: "DEFINITION",
+  },
+  evidence: {
+    border: "border-bid-teal",
+    bg: "bg-bid-teal/[0.03]",
+    titleColor: "text-bid-teal",
+    icon: "▪",
+    label: "EVIDENCE",
+  },
+};
+
+const v = variants[type];
+---
+
+<aside class:list={[
+  "bid-callout",
+  `bid-callout--${type}`,
+  "my-8 py-6 px-8",
+  "border-l-4",
+  v.border,
+  v.bg,
+  "not-prose",
+]}>
+  <div class="flex items-baseline gap-2 mb-3">
+    <span class:list={["text-[10px] font-sans font-medium tracking-[0.14em] uppercase", v.titleColor]}>
+      {v.label}
+    </span>
+  </div>
+
+  {title && (
+    <h4 class:list={[
+      "text-lg font-serif font-normal leading-snug mb-3",
+      v.titleColor,
+    ]}>
+      {title}
+    </h4>
+  )}
+
+  <div class="bid-callout-body text-sm sm:text-base text-bid-text-secondary leading-relaxed font-serif [&>p]:mb-3 [&>p:last-child]:mb-0 [&>strong]:text-bid-text [&>strong]:font-semibold [&>p>strong]:text-bid-text [&>p>strong]:font-semibold">
+    <slot />
+  </div>
+</aside>

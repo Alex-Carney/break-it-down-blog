@@ -1,0 +1,37 @@
+---
+/**
+ * CaseConclusion — Visually distinct takeaway box for case study conclusions.
+ * Used after each case study in "Why implementations fail" and similar sections.
+ * Signals to the reader: "this is the lesson."
+ *
+ * Usage in MDX:
+ *   import CaseConclusion from '@components/bid/CaseConclusion.astro'
+ *
+ *   <CaseConclusion>
+ *     Readiness is not additive. World-class talent combined with synthetic data
+ *     produced biased training. A massive budget combined with an unrealistic timeline
+ *     produced premature deployment.
+ *   </CaseConclusion>
+ */
+
+interface Props {
+  label?: string;
+}
+
+const { label = "What it reveals" } = Astro.props;
+---
+
+<aside class="bid-case-conclusion my-8 not-prose">
+  <div class="border border-bid-border bg-bid-surface relative pl-8 pr-8 py-6">
+    {/* Accent bar */}
+    <div class="absolute left-0 top-0 bottom-0 w-1 bg-bid-slate"></div>
+
+    <p class="text-[10px] font-sans font-medium tracking-[0.14em] uppercase text-bid-slate mb-3">
+      {label}
+    </p>
+
+    <div class="text-base font-serif text-bid-text leading-relaxed [&>p]:mb-3 [&>p:last-child]:mb-0 [&>strong]:font-semibold">
+      <slot />
+    </div>
+  </div>
+</aside>

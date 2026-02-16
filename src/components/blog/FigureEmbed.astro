@@ -1,0 +1,55 @@
+---
+/**
+ * FigureEmbed — Wrapper for interactive React figures.
+ * Provides consistent captioning, source attribution, and narrative context.
+ * The actual interactive component goes in the default slot with client:load.
+ *
+ * Usage in MDX:
+ *   import FigureEmbed from '@components/bid/FigureEmbed.astro'
+ *   import JaggedFrontier from '@components/bid/figures/JaggedFrontier'
+ *
+ *   <FigureEmbed
+ *     number={2}
+ *     title="The Jagged Frontier"
+ *     description="AI performance across 26 tasks from six controlled studies."
+ *     source="Brynjolfsson et al. (QJE 2025); Noy & Zhang (Science 2023); Dell'Acqua et al. (HBS 2023)"
+ *   >
+ *     <JaggedFrontier client:load />
+ *   </FigureEmbed>
+ */
+
+interface Props {
+  number: number;
+  title: string;
+  description?: string;
+  source?: string;
+}
+
+const { number, title, description, source } = Astro.props;
+---
+
+<figure class="bid-figure-embed my-10 not-prose">
+  <div class="mb-4">
+    <p class="text-[10px] font-sans font-medium tracking-[0.14em] uppercase text-bid-text-tertiary mb-1">
+      Figure {number}
+    </p>
+    <h3 class="text-lg sm:text-xl font-serif font-normal text-bid-text leading-snug">
+      {title}
+    </h3>
+    {description && (
+      <p class="mt-1 text-sm text-bid-text-secondary font-serif leading-relaxed max-w-xl">
+        {description}
+      </p>
+    )}
+  </div>
+
+  <div class="bid-figure-container border border-bid-border bg-bid-surface overflow-hidden">
+    <slot />
+  </div>
+
+  {source && (
+    <figcaption class="mt-2 text-[10px] text-bid-text-tertiary font-sans leading-relaxed">
+      Sources: {source}
+    </figcaption>
+  )}
+</figure>

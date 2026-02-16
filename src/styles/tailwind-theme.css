@@ -42,7 +42,24 @@
   --breakpoint-xl: 1280px;
   --breakpoint-2xl: 1536px;
 
+  /* Break it Down (BID) design tokens */
+  --color-bid-bg: #FAFAF8;
+  --color-bid-surface: #FFFFFF;
+  --color-bid-border: #E8E6E1;
+  --color-bid-text: #1A1A1A;
+  --color-bid-text-secondary: #6B6560;
+  --color-bid-text-tertiary: #9C9690;
+  --color-bid-slate: #264653;
+  --color-bid-teal: #2A9D8F;
+  --color-bid-gold: #E9C46A;
+  --color-bid-warm: #F4A261;
+  --color-bid-coral: #E76F51;
+  --color-bid-positive: #2D6A4F;
+  --color-bid-negative: #9B2226;
+
   /* font families */
+  --font-bid-serif: "Georgia", "Times New Roman", "serif";
+  --font-bid-sans: "Helvetica Neue", "Arial", "sans-serif";
   --font-fallback:
     "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "Helvetica", "Arial", "sans-serif",
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";

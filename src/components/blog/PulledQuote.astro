@@ -1,0 +1,35 @@
+---
+/**
+ * PulledQuote — Visually isolated statement for maximum impact.
+ * Used for the handful of sentences in an article that should stop a scanner.
+ * Sparse usage — 2-3 per article maximum.
+ *
+ * Usage in MDX:
+ *   import PulledQuote from '@components/bid/PulledQuote.astro'
+ *
+ *   <PulledQuote>Motors depreciate. Wiring compounds.</PulledQuote>
+ *
+ *   <PulledQuote attribution="Deborah Lovich, BCG">
+ *     The technology was deployed. It was culturally refused.
+ *   </PulledQuote>
+ */
+
+interface Props {
+  attribution?: string;
+}
+
+const { attribution } = Astro.props;
+---
+
+<figure class="bid-pulled-quote my-12 not-prose">
+  <div class="border-t border-b border-bid-border py-8 px-4 sm:px-12 text-center">
+    <blockquote class="text-xl sm:text-2xl font-serif font-normal text-bid-text leading-relaxed tracking-tight">
+      <slot />
+    </blockquote>
+    {attribution && (
+      <figcaption class="mt-4 text-xs font-sans tracking-wide uppercase text-bid-text-tertiary">
+        — {attribution}
+      </figcaption>
+    )}
+  </div>
+</figure>
