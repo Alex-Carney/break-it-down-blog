@@ -6,7 +6,6 @@ export interface SiteDataProps {
   author: {
     name: string;
     email: string;
-    twitter: string;
   };
   defaultImage: {
     src: string;
