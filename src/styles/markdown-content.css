@@ -99,6 +99,19 @@
   @apply text-foreground decoration-primary-accent hover:text-primary-accent underline underline-offset-2 transition-colors;
 }
 
+/* citation links — blend with body text, no underline */
+.markdown-content a[href^="#ref-"] {
+  text-decoration: none;
+  color: var(--color-bid-slate);
+  font-size: 0.85em;
+  font-weight: 500;
+  vertical-align: super;
+  line-height: 0;
+}
+.markdown-content a[href^="#ref-"]:hover {
+  color: var(--color-bid-coral);
+}
+
 /* code */
 .markdown-content code:not(:where(.not-content *)) {
   @apply text-foreground/80 bg-muted border-border rounded-sm border-2 border-solid px-[.1rem] py-0;

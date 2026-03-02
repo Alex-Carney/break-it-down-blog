@@ -1,7 +1,7 @@
 import FigureContainer from './figure-container';
 
 export default function SpendingInversion({ t }) {
-  const barH = 44;
+  const barH = 46;
 
   const actual = [
     { label: "Technology", pct: 93, fill: t.techFill, color: t.techColor },
@@ -14,14 +14,14 @@ export default function SpendingInversion({ t }) {
     { label: "People & change mgmt", pct: 70, fill: t.peopleFill, color: t.peopleColor },
   ];
 
-  const renderBar = (segments, label, sublabel) => (
-    <div style={{ marginBottom: 32 }}>
+  const renderBar = (segments, title, sublabel) => (
+    <div style={{ marginBottom: 28 }}>
       <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between", marginBottom: 8 }}>
-        <div style={{ fontSize: 12, fontWeight: 600, color: t.text }}>{label}</div>
+        <div style={{ fontSize: 12, fontWeight: 600, color: t.text }}>{title}</div>
         <div style={{ fontSize: 10, color: t.textFaint }}>{sublabel}</div>
       </div>
 
-      {/* Bar */}
+      {/* Stacked bar with percentages always inside */}
       <div style={{
         display: "flex", height: barH, borderRadius: 5, overflow: "hidden",
         border: `1px solid ${t.borderLight}`,
@@ -31,43 +31,33 @@ export default function SpendingInversion({ t }) {
             width: `${seg.pct}%`, height: "100%", background: seg.fill,
             borderRight: i < segments.length - 1 ? `1px solid ${t.borderLight}` : "none",
             display: "flex", alignItems: "center", justifyContent: "center",
-            overflow: "hidden",
+            position: "relative", overflow: "visible",
           }}>
-            {seg.pct >= 15 && (
-              <span style={{
-                fontSize: seg.pct >= 40 ? 15 : 12,
-                fontWeight: 700, color: seg.color,
-              }}>{seg.pct}%</span>
-            )}
+            <span style={{
+              fontSize: seg.pct >= 30 ? 15 : 11,
+              fontWeight: 700,
+              color: seg.color,
+              whiteSpace: "nowrap",
+            }}>{seg.pct}%</span>
           </div>
         ))}
       </div>
 
-      {/* Labels below bar */}
-      <div style={{ display: "flex", marginTop: 6 }}>
-        {(() => {
-          let offset = 0;
-          return segments.map((seg, i) => {
-            const left = offset;
-            offset += seg.pct;
-            return (
-              <div key={i} style={{
-                width: `${seg.pct}%`,
-                textAlign: "center",
-                padding: "0 2px",
-              }}>
-                {seg.pct < 15 && (
-                  <div style={{ fontSize: 11, fontWeight: 700, color: seg.color, lineHeight: 1.3 }}>{seg.pct}%</div>
-                )}
-                <div style={{
-                  fontSize: 10, color: seg.color, fontWeight: 500, lineHeight: 1.3,
-                  whiteSpace: seg.pct < 20 ? "nowrap" : "normal",
-                  overflow: "visible",
-                }}>{seg.label}</div>
-              </div>
-            );
-          });
-        })()}
+      {/* Labels below, one per segment, same width proportions */}
+      <div style={{ display: "flex", marginTop: 4 }}>
+        {segments.map((seg, i) => (
+          <div key={i} style={{
+            width: `${seg.pct}%`,
+            textAlign: "center",
+            fontSize: 10,
+            fontWeight: 500,
+            color: seg.color,
+            lineHeight: 1.3,
+            padding: "2px 1px 0",
+          }}>
+            {seg.label}
+          </div>
+        ))}
       </div>
     </div>
   );

@@ -46,6 +46,9 @@ const PALETTE = {
     tealBorder: "#0EA5A5",
     tealInsightBg: "rgba(14,165,165,0.08)",
     tealInsightBorder: "rgba(14,165,165,0.2)",
+    warnActive: "#F0708A",
+    warnInsightBg: "rgba(240,112,138,0.08)",
+    warnInsightBorder: "rgba(240,112,138,0.2)",
   },
   light: {
     bg: "#FFFFFF",
@@ -77,6 +80,9 @@ const PALETTE = {
     tealBorder: "#0EA5A5",
     tealInsightBg: "rgba(14,165,165,0.05)",
     tealInsightBorder: "rgba(14,165,165,0.15)",
+    warnActive: "#C4506A",
+    warnInsightBg: "rgba(196,80,106,0.05)",
+    warnInsightBorder: "rgba(196,80,106,0.15)",
   },
 };
 
@@ -127,6 +133,13 @@ const SPOTLIGHTS = {
 
 const VIEWS = [
   {
+    key: "engagement", label: "Cognitive Engagement", xLabel: "Engagement with AI Output", xKey: "engagement",
+    lowLabel: "Delegation", highLabel: "Active interrogation",
+    insight: "The scatter resolves into signal.",
+    analysis: "Every study condition where practitioners delegated judgment to AI clusters in the bottom left. Every condition where practitioners maintained cognitive engagement, whether through heavy AI use with active interrogation or through minimal AI use with human-led analysis, clusters in the upper right. Four independent studies, conducted by different researchers on different populations, converge on the same variable.",
+    correlation: "strong",
+  },
+  {
     key: "experience", label: "Experience Level", xLabel: "Participant Expertise", xKey: "experience",
     lowLabel: "Students", highLabel: "Elite consultants",
     insight: "No pattern emerges.",
@@ -139,13 +152,6 @@ const VIEWS = [
     insight: "No pattern emerges.",
     analysis: "Developers who barely used AI scored 65%. Developers who used it heavily scored 86%. Other heavy users scored 24%. Across studies, both minimal and heavy AI users appear at the top and bottom of the outcome range. If the variable were frequency of AI use, the right side would be consistently higher or lower. It\u2019s neither. The \u201cuse AI more\u201d mandate and the \u201cuse AI less\u201d caution are both wrong.",
     correlation: "none",
-  },
-  {
-    key: "engagement", label: "Cognitive Engagement", xLabel: "Engagement with AI Output", xKey: "engagement",
-    lowLabel: "Delegation", highLabel: "Active interrogation",
-    insight: "The scatter resolves into signal.",
-    analysis: "Every study condition where practitioners delegated judgment to AI clusters in the bottom left. Every condition where practitioners maintained cognitive engagement, whether through heavy AI use with active interrogation or through minimal AI use with human-led analysis, clusters in the upper right. Four independent studies, conducted by different researchers on different populations, converge on the same variable.",
-    correlation: "strong",
   },
 ];
 
@@ -243,7 +249,7 @@ export default function CovariationDisplay() {
       }}
     >
       {/* Toggle buttons */}
-      <div style={{ display: "flex", gap: 6, flexWrap: "wrap", marginBottom: 14, justifyContent: "center" }}>
+      <div style={{ display: "flex", gap: 6, marginBottom: 14, justifyContent: "center" }}>
         {VIEWS.map((v, i) => {
           const isActive = i === activeView;
           const isEng = v.key === "engagement";
@@ -252,21 +258,22 @@ export default function CovariationDisplay() {
               key={v.key}
               onClick={() => setActiveView(i)}
               style={{
-                padding: "6px 14px",
+                padding: "8px 18px",
                 borderRadius: 6,
                 border: isActive
-                  ? `1.5px solid ${isEng ? c.tealBorder : c.purpleBorder}`
+                  ? `1.5px solid ${isEng ? c.tealBorder : c.btnBorder}`
                   : `1.5px solid ${c.btnBorder}`,
                 background: isActive
-                  ? isEng ? c.tealBg : c.purpleBg
+                  ? isEng ? c.tealBg : c.btnBg
                   : c.btnBg,
                 color: isActive
-                  ? isEng ? c.tealActive : c.purpleActive
+                  ? isEng ? c.tealActive : c.text
                   : c.textMuted,
                 fontSize: 13,
-                fontWeight: isActive ? 600 : 400,
+                fontWeight: 500,
                 cursor: "pointer",
                 transition: "all 0.2s",
+                whiteSpace: "nowrap",
               }}
             >
               {v.label}
@@ -377,21 +384,21 @@ export default function CovariationDisplay() {
 
       {/* Insight panel */}
       <div style={{
-        background: isEngagement ? c.tealInsightBg : c.purpleInsightBg,
-        border: `1px solid ${isEngagement ? c.tealInsightBorder : c.purpleInsightBorder}`,
+        background: isEngagement ? c.tealInsightBg : c.warnInsightBg,
+        border: `1px solid ${isEngagement ? c.tealInsightBorder : c.warnInsightBorder}`,
         borderRadius: 8, padding: "12px 14px", marginBottom: 12,
       }}>
-        <div style={{ fontSize: 13, fontWeight: 600, color: isEngagement ? c.tealActive : c.purpleActive, marginBottom: 4 }}>{view.insight}</div>
+        <div style={{ fontSize: 13, fontWeight: 600, color: isEngagement ? c.tealActive : c.warnActive, marginBottom: 4 }}>{view.insight}</div>
         <div style={{ fontSize: 12.5, lineHeight: 1.6, color: c.insightText }}>{view.analysis}</div>
       </div>
 
       {/* Legend */}
-      <div style={{ display: "flex", flexWrap: "wrap", gap: "8px 16px", justifyContent: "center", marginBottom: 8 }}>
+      <div style={{ display: "flex", justifyContent: "center", gap: 20, marginBottom: 8 }}>
         {Object.entries(STUDIES).map(([key, s]) => (
-          <div key={key} style={{ display: "flex", alignItems: "center", gap: 5 }}>
-            <span style={{ width: 8, height: 8, borderRadius: "50%", background: s.color, display: "inline-block" }} />
-            <span style={{ fontSize: 11, color: c.textMuted }}>{s.name}{s.n ? ` (n=${s.n})` : ""}</span>
-          </div>
+          <span key={key} style={{ display: "inline-flex", alignItems: "center", gap: 5, fontSize: 11, color: c.textMuted, whiteSpace: "nowrap" }}>
+            <span style={{ width: 8, height: 8, borderRadius: "50%", background: s.color, display: "inline-block", flexShrink: 0 }} />
+            {s.name}{s.n ? ` (n=${s.n})` : ""}
+          </span>
         ))}
       </div>
 
