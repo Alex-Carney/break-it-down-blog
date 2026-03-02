@@ -1,11 +1,11 @@
 import { useState, useMemo } from "react";
 
 const P = {
-  bg: "#FAFAF8", surface: "#FFFFFF", border: "#E8E6E1",
-  text: "#1A1A1A", sub: "#6B6560", muted: "#9C9690",
-  accent: "#264653", teal: "#2A9D8F", coral: "#E76F51",
-  gold: "#E9C46A", warm: "#F4A261",
-  positive: "#2D6A4F",
+  bg: "#F6F5F9", surface: "#FFFFFF", border: "#D0CEE0",
+  text: "#1A1830", sub: "#3A3856", muted: "#6E6C8A",
+  accent: "#6B4FCF", teal: "#0EA5A5", coral: "#A83E54",
+  gold: "#3458A8", warm: "#B45309",
+  positive: "#0F7B4F",
 };
 
 const BENCHMARKS = [

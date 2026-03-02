@@ -13,10 +13,6 @@ const navConfig: navItem[] = [
     text: "About",
     link: "/about",
   },
-  {
-    text: "Contact",
-    link: "/contact",
-  },
 ];
 
 export default navConfig;

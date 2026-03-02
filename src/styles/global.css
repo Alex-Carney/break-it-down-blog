@@ -21,8 +21,8 @@
 @layer base {
   :root {
     /* default color of <body> background and text */
-    --background: var(--color-base-50);
-    --foreground: var(--color-base-950);
+    --background: #F6F5F9;
+    --foreground: #1A1830;
 
     /* Background and text color for <Card> */
     --card: var(--color-base-50);
@@ -105,8 +105,8 @@
 
   /* overriding above variables when a parent has the class "dark" */
   .dark {
-    --background: var(--color-base-950);
-    --foreground: var(--color-base-50);
+    --background: #08061A;
+    --foreground: #ECE8F8;
     --card: var(--color-base-900);
     --card-foreground: var(--color-base-50);
     --popover: var(--color-base-900);
@@ -134,21 +134,21 @@
     --outline: var(--color-primary-400);
 
     /* BID dark mode overrides */
-    --color-bid-bg: #131315;
-    --color-bid-surface: #1c1c20;
-    --color-bid-border: #2e2e33;
-    --color-bid-text: #e5e3de;
-    --color-bid-text-secondary: #a09a90;
-    --color-bid-text-tertiary: #6b6862;
-    --color-bid-slate: #5a99aa;
-    --color-bid-teal: #40c9b8;
-    --color-bid-gold: #f0cf78;
-    --color-bid-warm: #f7b46a;
-    --color-bid-coral: #ef8466;
-    --color-bid-positive: #4cb88a;
-    --color-bid-positive-bg: #1a2e24;
-    --color-bid-negative: #d85050;
-    --color-bid-negative-bg: #2e1a1a;
+    --color-bid-bg: #0E0C22;                       /* deep navy page bg */
+    --color-bid-surface: #141230;                  /* panel surface */
+    --color-bid-border: #2A2850;                   /* subtle purple border */
+    --color-bid-text: #ECE8F8;                     /* off-white purple-tinted text */
+    --color-bid-text-secondary: #B4B0CE;           /* muted secondary */
+    --color-bid-text-tertiary: #7A78A0;            /* faint tertiary */
+    --color-bid-slate: #7A9EF0;                    /* bright annotation blue */
+    --color-bid-teal: #0EA5A5;                     /* interactive teal (same both modes) */
+    --color-bid-gold: #7A9EF0;                     /* same as slate in dark */
+    --color-bid-warm: #F59E0B;                     /* amber — caution, warning */
+    --color-bid-coral: #A48AFF;                    /* glowing lavender purple */
+    --color-bid-positive: #3EE0A0;                 /* bright mint/emerald — positive */
+    --color-bid-positive-bg: rgba(62, 224, 160, 0.06);
+    --color-bid-negative: #F07090;                 /* bright rose — negative */
+    --color-bid-negative-bg: rgba(240, 112, 144, 0.06);
   }
 
   /* starwind preflight merged with Cosmic Themes */

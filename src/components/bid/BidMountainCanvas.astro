@@ -1,0 +1,140 @@
+---
+/**
+ * BidMountainCanvas — Wireframe mountain landscape rendered on HTML Canvas.
+ * Always dark background (self-contained image). Used as blog card hero images.
+ * Three ridges: purple (back), blue (middle), teal (front).
+ *
+ * Usage:
+ *   <BidMountainCanvas height={190} />
+ */
+
+interface Props {
+  height?: number;
+  class?: string;
+}
+
+const { height = 190, class: className } = Astro.props;
+const canvasId = `bid-mountain-${Math.random().toString(36).slice(2, 7)}`;
+---
+
+<canvas
+  id={canvasId}
+  data-bid-mountain
+  class:list={[className, "block w-full"]}
+  style={`height:${height}px;`}
+></canvas>
+
+<script define:vars={{ canvasId, height }}>
+  function drawMountains(canvas) {
+    const w = canvas.parentElement?.offsetWidth || canvas.offsetWidth || 400;
+    const h = height;
+    canvas.width = w * 2;
+    canvas.height = h * 2;
+    canvas.style.width = "100%";
+    canvas.style.height = h + "px";
+    const ctx = canvas.getContext("2d");
+    ctx.scale(2, 2);
+
+    const PURPLE = "#8365EE", BLUE = "#4A7CCE", TEAL = "#0EA5A5";
+
+    // Background
+    const bg = ctx.createLinearGradient(0, 0, 0, h);
+    bg.addColorStop(0, "#060418");
+    bg.addColorStop(1, "#0C0A24");
+    ctx.fillStyle = bg;
+    ctx.fillRect(0, 0, w, h);
+
+    // Stars
+    for (let i = 0; i < 40; i++) {
+      ctx.beginPath();
+      ctx.arc(Math.random() * w, Math.random() * h * 0.5, 0.3 + Math.random() * 0.5, 0, Math.PI * 2);
+      ctx.fillStyle = "#FFF";
+      ctx.globalAlpha = 0.2 + Math.random() * 0.4;
+      ctx.fill();
+    }
+
+    // Ridges
+    const ridges = [
+      { baseY: h * 0.38, height: h * 0.42, detail: 14, col: PURPLE, alpha: 0.8 },
+      { baseY: h * 0.46, height: h * 0.32, detail: 12, col: BLUE,   alpha: 0.6 },
+      { baseY: h * 0.54, height: h * 0.24, detail: 10, col: TEAL,   alpha: 0.5 },
+    ];
+
+    ridges.forEach((r) => {
+      const pts = [];
+      for (let i = 0; i <= r.detail; i++) {
+        const x = (i / r.detail) * w;
+        const noise =
+          Math.sin(i * 1.2) * 0.4 + Math.sin(i * 2.7) * 0.3 + Math.sin(i * 0.5) * 0.3;
+        const peak = Math.sin((i / r.detail) * Math.PI);
+        pts.push([x, r.baseY - noise * r.height * peak]);
+      }
+
+      // Horizontal wireframe rows
+      for (let row = 0; row < 7; row++) {
+        const f = row / 7;
+        ctx.beginPath();
+        ctx.globalAlpha = r.alpha * (1 - f * 0.6);
+        for (let i = 0; i <= r.detail; i++) {
+          const x = pts[i][0];
+          const y = pts[i][1] + (r.baseY + h * 0.18 - pts[i][1]) * f;
+          i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+        }
+        ctx.strokeStyle = r.col;
+        ctx.lineWidth = 0.8;
+        ctx.stroke();
+      }
+
+      // Vertical lines
+      ctx.globalAlpha = r.alpha * 0.25;
+      for (let i = 0; i <= r.detail; i++) {
+        ctx.beginPath();
+        ctx.moveTo(pts[i][0], pts[i][1]);
+        ctx.lineTo(pts[i][0], r.baseY + h * 0.18);
+        ctx.strokeStyle = r.col;
+        ctx.lineWidth = 0.4;
+        ctx.stroke();
+      }
+
+      // Peak nodes
+      ctx.globalAlpha = 1;
+      pts.forEach(([x, y], i) => {
+        if (i % 2 === 0) {
+          const g = ctx.createRadialGradient(x, y, 0, x, y, 3);
+          g.addColorStop(0, "#FFF");
+          g.addColorStop(0.4, r.col);
+          g.addColorStop(1, "transparent");
+          ctx.fillStyle = g;
+          ctx.fillRect(x - 3, y - 3, 6, 6);
+        }
+      });
+    });
+
+    // Ground plane perspective lines
+    for (let i = 0; i < 10; i++) {
+      const y = h * 0.7 + i * h * 0.03;
+      ctx.beginPath();
+      ctx.moveTo(0, y);
+      ctx.lineTo(w, y);
+      ctx.strokeStyle = BLUE;
+      ctx.lineWidth = 0.5;
+      ctx.globalAlpha = Math.max(0, 0.18 - i * 0.016);
+      ctx.stroke();
+    }
+
+    ctx.globalAlpha = 1;
+  }
+
+  function init() {
+    const canvas = document.getElementById(canvasId);
+    if (canvas) drawMountains(canvas);
+  }
+
+  init();
+  document.addEventListener("astro:after-swap", init);
+
+  // Redraw on resize for responsive cards
+  const ro = new ResizeObserver(init);
+  const el = document.getElementById(canvasId);
+  if (el?.parentElement) ro.observe(el.parentElement);
+</script>

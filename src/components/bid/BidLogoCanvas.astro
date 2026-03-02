@@ -1,0 +1,145 @@
+---
+/**
+ * BidLogoCanvas — Decomposition cube logo rendered on HTML Canvas.
+ * A 3D wireframe cube fragmenting into four colored pieces — literal visual
+ * metaphor for "Break it Down". Redraws on theme change and view transitions.
+ *
+ * Usage:
+ *   <BidLogoCanvas size={32} />
+ */
+
+interface Props {
+  size?: number;
+  class?: string;
+}
+
+const { size = 32, class: className } = Astro.props;
+const canvasId = `bid-logo-${Math.random().toString(36).slice(2, 7)}`;
+---
+
+<canvas
+  id={canvasId}
+  data-bid-logo
+  class:list={[className]}
+  style={`width:${size}px;height:${size}px;border-radius:6px;display:block;`}
+></canvas>
+
+<script define:vars={{ canvasId, size }}>
+  function drawLogo(canvas) {
+    const ctx = canvas.getContext("2d");
+    const isDark = document.documentElement.classList.contains("dark");
+    const w = size;
+    const cx = w / 2, cy = w / 2, s = w * 0.2;
+
+    canvas.width = w * 2;
+    canvas.height = w * 2;
+    canvas.style.width = w + "px";
+    canvas.style.height = w + "px";
+    ctx.scale(2, 2);
+
+    // Background
+    if (isDark) {
+      const bg = ctx.createRadialGradient(cx, cy, 0, cx, cy, w * 0.7);
+      bg.addColorStop(0, "#0E0A24");
+      bg.addColorStop(1, "#08061A");
+      ctx.fillStyle = bg;
+    } else {
+      ctx.fillStyle = "#F6F5F9";
+    }
+    ctx.fillRect(0, 0, w, w);
+
+    // 3D projection (isometric-ish)
+    const a = 0.5;
+    const co = Math.cos(a), sn = Math.sin(a);
+    const cY = Math.cos(0.3), sY = Math.sin(0.3);
+    const proj = (x, y, z) => {
+      const rx = x * co - z * sn, rz = x * sn + z * co;
+      const ry = y * cY - rz * sY;
+      return [cx + rx, cy + ry];
+    };
+
+    const verts = [
+      [-s, -s, -s], [s, -s, -s], [s, s, -s], [-s, s, -s],
+      [-s, -s, s],  [s, -s, s],  [s, s, s],  [-s, s, s],
+    ];
+    const P = verts.map((v) => proj(v[0], v[1], v[2]));
+
+    const colP = isDark ? "#8365EE" : "#6B4FCF";
+    const colB = isDark ? "#4A7CCE" : "#3458A8";
+    const colT = isDark ? "#0EA5A5" : "#0A8888";
+
+    const frags = [
+      { v: [0, 1, 2, 3], e: [[0,1],[1,2],[2,3],[3,0]], o: [-3, -2], c: colP },
+      { v: [4, 5, 6, 7], e: [[4,5],[5,6],[6,7],[7,4]], o: [3,  2],  c: colB },
+      { v: [0, 4, 7, 3], e: [[0,4],[4,7],[7,3],[3,0]], o: [-3, 2],  c: colT },
+      { v: [1, 5, 6, 2], e: [[1,5],[5,6],[6,2],[2,1]], o: [3,  -2], c: colP },
+    ];
+
+    // Ghost lines — faint original cube
+    ctx.globalAlpha = isDark ? 0.06 : 0.08;
+    const allEdges = [[0,1],[1,2],[2,3],[3,0],[4,5],[5,6],[6,7],[7,4],[0,4],[1,5],[2,6],[3,7]];
+    allEdges.forEach(([a, b]) => {
+      ctx.beginPath();
+      ctx.moveTo(P[a][0], P[a][1]);
+      ctx.lineTo(P[b][0], P[b][1]);
+      ctx.strokeStyle = isDark ? "#FFF" : "#1A1830";
+      ctx.lineWidth = 0.5;
+      ctx.stroke();
+    });
+
+    // Fragment edges + glow + vertex nodes
+    frags.forEach((f) => {
+      ctx.globalAlpha = isDark ? 0.8 : 0.7;
+      f.e.forEach(([a, b]) => {
+        ctx.beginPath();
+        ctx.moveTo(P[a][0] + f.o[0], P[a][1] + f.o[1]);
+        ctx.lineTo(P[b][0] + f.o[0], P[b][1] + f.o[1]);
+        ctx.strokeStyle = f.c;
+        ctx.lineWidth = 1.5;
+        ctx.stroke();
+      });
+
+      ctx.globalAlpha = isDark ? 0.12 : 0.08;
+      f.e.forEach(([a, b]) => {
+        ctx.beginPath();
+        ctx.moveTo(P[a][0] + f.o[0], P[a][1] + f.o[1]);
+        ctx.lineTo(P[b][0] + f.o[0], P[b][1] + f.o[1]);
+        ctx.strokeStyle = f.c;
+        ctx.lineWidth = 5;
+        ctx.stroke();
+      });
+
+      ctx.globalAlpha = 1;
+      f.v.forEach((vi) => {
+        const px = P[vi][0] + f.o[0], py = P[vi][1] + f.o[1];
+        const g = ctx.createRadialGradient(px, py, 0, px, py, 3);
+        g.addColorStop(0, isDark ? "#FFF" : f.c);
+        g.addColorStop(0.5, f.c);
+        g.addColorStop(1, "transparent");
+        ctx.fillStyle = g;
+        ctx.fillRect(px - 3, py - 3, 6, 6);
+      });
+    });
+
+    ctx.globalAlpha = 1;
+  }
+
+  function init() {
+    const canvas = document.getElementById(canvasId);
+    if (canvas) drawLogo(canvas);
+  }
+
+  // Initial draw
+  init();
+
+  // Redraw on view transitions
+  document.addEventListener("astro:after-swap", init);
+
+  // Redraw immediately when theme toggle fires (no page navigation needed)
+  document.addEventListener("click", (e) => {
+    if (e.target && e.target.closest("[data-theme-toggle]")) {
+      // Small delay to let classList update before reading it
+      setTimeout(init, 20);
+    }
+  });
+</script>

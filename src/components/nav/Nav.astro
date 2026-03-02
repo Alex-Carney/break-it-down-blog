@@ -1,5 +1,4 @@
 ---
-import Button from "@/components/button/Button.astro";
 import SiteLogo from "@/components/site-logo/SiteLogo.astro";
 import ThemeToggle from "@/components/theme-toggle/ThemeToggle.astro";
 import { getLocaleFromUrl } from "@/js/localeUtils";
@@ -67,16 +66,6 @@ const { navStyle = "default" } = Astro.props as Props;
 
           <ThemeToggle class="mr-3 -ml-4 hidden md:block" />
 
-          <Button
-            variant="primary"
-            class="my-auto hidden px-4 py-2 md:flex"
-            href="https://cosmicthemes.com/all-access/"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Get All Access
-          </Button>
-
           <!-- mobile nav menu, only load on small screens where it is visible -->
           <div class="md:hidden">
             <MobileNav />
@@ -92,7 +81,16 @@ const { navStyle = "default" } = Astro.props as Props;
   @import "@/styles/tailwind-theme.css" theme(reference);
 
   .navbar--scrolled {
-    @apply bg-background border-b;
+    background: rgba(246, 245, 249, 0.90);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border-bottom-width: 1px;
+    border-bottom-color: var(--color-bid-border);
+  }
+
+  :global(.dark) .navbar--scrolled {
+    background: rgba(8, 6, 26, 0.88);
+    border-bottom-color: var(--color-bid-border);
   }
 
   .navbar--initial {

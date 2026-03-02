@@ -43,31 +43,33 @@
   --breakpoint-2xl: 1536px;
 
   /* Break it Down (BID) design tokens */
-  --color-bid-bg: #FAFAF8;
-  --color-bid-surface: #FFFFFF;
-  --color-bid-border: #E8E6E1;
-  --color-bid-text: #1A1A1A;
-  --color-bid-text-secondary: #6B6560;
-  --color-bid-text-tertiary: #9C9690;
-  --color-bid-slate: #264653;
-  --color-bid-teal: #2A9D8F;
-  --color-bid-gold: #E9C46A;
-  --color-bid-warm: #F4A261;
-  --color-bid-coral: #E76F51;
-  --color-bid-positive: #2D6A4F;
-  --color-bid-negative: #9B2226;
+  --color-bid-bg: #F6F5F9;                    /* cool purple-tinted page background */
+  --color-bid-surface: #FFFFFF;               /* card / panel surface */
+  --color-bid-border: #D0CEE0;                /* cool purple-tinted borders */
+  --color-bid-text: #1A1830;                  /* deep navy primary text */
+  --color-bid-text-secondary: #3A3856;        /* dark secondary text */
+  --color-bid-text-tertiary: #6E6C8A;         /* muted captions, labels */
+  --color-bid-slate: #3458A8;                 /* annotation blue — data notes, definitions */
+  --color-bid-teal: #0EA5A5;                  /* interactive teal — toggles, UI controls */
+  --color-bid-gold: #3458A8;                  /* data label blue — same as slate */
+  --color-bid-warm: #B45309;                  /* amber — caution, warning callouts */
+  --color-bid-coral: #6B4FCF;                 /* brand purple — key findings, highlights */
+  --color-bid-positive: #0F7B4F;              /* deep emerald — positive outcomes, gains */
+  --color-bid-positive-bg: rgba(15, 123, 79, 0.06);
+  --color-bid-negative: #A83E54;              /* dusty rose — negative outcomes, losses */
+  --color-bid-negative-bg: rgba(168, 62, 84, 0.06);
 
   /* font families */
-  --font-bid-serif: "Georgia", "Times New Roman", "serif";
-  --font-bid-sans: "Helvetica Neue", "Arial", "sans-serif";
+  --font-bid-serif: "Source Serif 4", "Georgia", "Times New Roman", "serif";
+  --font-bid-sans: "Inter Variable", "Helvetica Neue", "Arial", "sans-serif";
   --font-fallback:
     "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "Helvetica", "Arial", "sans-serif",
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   --font-sans: "Inter Variable", var(--font-fallback);
   --font-heading: "Inter Variable", var(--font-fallback);
   --font-serif:
-    "Iowan Old Style", "Apple Garamond", "Baskerville", "Times New Roman", "Droid Serif", "Times",
-    "Source Serif Pro", "serif", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    "Source Serif 4", "Iowan Old Style", "Apple Garamond", "Baskerville", "Times New Roman", "Droid Serif", "Times",
+    "serif", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   --font-mono:
     "SFMono-Regular", "Menlo", "Monaco", "Consolas", "Liberation Mono", "Courier New", "monospace";
 

@@ -4,7 +4,6 @@ import { Icon } from "astro-icon/components";
 import MobileNavDropdown from "@/components/nav/mobile-nav/MobileNavDropdown.astro";
 //components
 import NavLink from "@/components/nav/NavLink.astro";
-import Button from "@/components/starwind/button";
 import ThemeToggle from "@/components/theme-toggle/ThemeToggle.astro";
 import { getLocaleFromUrl } from "@/js/localeUtils";
 import { getTranslatedData } from "@/js/translationUtils";
@@ -69,18 +68,6 @@ const navData = getTranslatedData("navData", currLocale);
           }
         </ul>
       </nav>
-      <div class="mx-1 mt-3 px-4">
-        <Button
-          variant="primary"
-          class="w-full"
-          target="_blank"
-          rel="noreferrer"
-          href="https://cosmicthemes.com/all-access/"
-        >
-          Get All Access
-        </Button>
-      </div>
-
       <div class="mt-4 flex items-start justify-between pr-2 pl-4">
         <ThemeToggle />
 

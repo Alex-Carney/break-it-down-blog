@@ -1,9 +1,67 @@
-<svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="24"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2b7efe" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-north-star">
-  <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-  <path d="M3 12h18"></path>
-  <path d="M12 21v-18"></path>
-  <path d="M7.5 7.5l9 9"></path>
-  <path d="M7.5 16.5l9 -9"></path>
-</svg><style>@media (prefers-color-scheme: light) { :root { filter: none; } }
-@media (prefers-color-scheme: dark) { :root { filter: none; } }
-</style></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <!-- Dark background -->
+  <rect width="32" height="32" rx="7" fill="#0E0C22"/>
+
+  <!-- Decomposition cube — isometric-style, three visible faces -->
+
+  <!-- Top face (purple) -->
+  <polygon
+    points="16,4 23,8 16,12 9,8"
+    fill="none"
+    stroke="#8365EE"
+    stroke-width="1.1"
+    stroke-linejoin="round"
+    opacity="0.95"
+  />
+
+  <!-- Left face (blue) -->
+  <polygon
+    points="9,8.5 16,12.5 16,20.5 9,16.5"
+    fill="none"
+    stroke="#4A7CCE"
+    stroke-width="1.1"
+    stroke-linejoin="round"
+    opacity="0.85"
+  />
+
+  <!-- Right face (teal) -->
+  <polygon
+    points="23,8.5 23,16.5 16,20.5 16,12.5"
+    fill="none"
+    stroke="#0EA5A5"
+    stroke-width="1.1"
+    stroke-linejoin="round"
+    opacity="0.85"
+  />
+
+  <!-- Ghost spine lines -->
+  <line x1="16" y1="4" x2="16" y2="12" stroke="#ffffff" stroke-width="0.4" opacity="0.18"/>
+  <line x1="9" y1="8" x2="16" y2="12" stroke="#ffffff" stroke-width="0.4" opacity="0.18"/>
+  <line x1="23" y1="8" x2="16" y2="12" stroke="#ffffff" stroke-width="0.4" opacity="0.18"/>
+  <line x1="16" y1="12" x2="16" y2="20.5" stroke="#ffffff" stroke-width="0.4" opacity="0.18"/>
+
+  <!-- Vertex nodes -->
+  <circle cx="16" cy="4" r="1.2" fill="#8365EE" opacity="0.9"/>
+  <circle cx="16" cy="4" r="0.5" fill="#ffffff" opacity="0.95"/>
+  <circle cx="9" cy="8" r="1" fill="#4A7CCE" opacity="0.85"/>
+  <circle cx="9" cy="8" r="0.4" fill="#ffffff" opacity="0.9"/>
+  <circle cx="23" cy="8" r="1" fill="#0EA5A5" opacity="0.85"/>
+  <circle cx="23" cy="8" r="0.4" fill="#ffffff" opacity="0.9"/>
+  <circle cx="16" cy="12" r="1.1" fill="#8365EE" opacity="0.7"/>
+  <circle cx="9" cy="16.5" r="0.9" fill="#4A7CCE" opacity="0.7"/>
+  <circle cx="23" cy="16.5" r="0.9" fill="#0EA5A5" opacity="0.7"/>
+  <circle cx="16" cy="20.5" r="0.9" fill="#8365EE" opacity="0.6"/>
+
+  <!-- BID monogram -->
+  <text
+    x="16"
+    y="29"
+    text-anchor="middle"
+    font-family="system-ui, -apple-system, sans-serif"
+    font-size="5"
+    font-weight="700"
+    letter-spacing="0.5"
+    fill="#8365EE"
+    opacity="0.85"
+  >BID</text>
+</svg>

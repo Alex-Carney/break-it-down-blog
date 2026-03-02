@@ -2,12 +2,11 @@ import { type SiteDataProps } from "../types/configDataTypes";
 
 // Update this file with your site specific information
 const siteData: SiteDataProps = {
-  name: "Break it Down",
+  name: "Break it Down.",
   // Your website's title and description (meta fields)
-  title:
-    "Break it Down - The kitchen sink starter for SaaS, Services, Portfolio, Blog, and more websites. Remove what you don't need and deploy.",
+  title: "Break it Down. — Complex Systems. Explained Clearly.",
   description:
-    "Create an amazing website for your small business clients with our beautiful website theme designed using Astro and Tailwind CSS. Perfect for freelancers, developers, startups, and personal use.",
+    "Complex systems — technology, AI, organizations, strategy — explained clearly. Break it Down. traces the research to find what actually happens, and why the conventional wisdom usually misses it.",
 
   // Your information for blog post purposes
   author: {

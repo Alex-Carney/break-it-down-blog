@@ -50,15 +50,11 @@
     @apply text-muted-foreground;
 }
 
-/* paragraph text size */
-/* .markdown-content p:not(:where(.not-content *)) {
-	@apply lg:text-lg;
-} */
-
-/* paragraph text size */
+/* paragraph text — Source Serif 4 body text per brand spec */
 .markdown-content p:not(:where(.not-content, .not-content *)) {
-  @apply text-base md:leading-7;
-  /* @apply text-sm leading-6 sm:text-base md:leading-7; */
+  font-family: var(--font-serif);
+  font-size: 15px;
+  line-height: 1.75;
 }
 
 .markdown-content

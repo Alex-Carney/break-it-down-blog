@@ -1,20 +1,20 @@
 import { useState, useMemo } from "react";
 
 const PALETTE = {
-  bg: "#FAFAF8", surface: "#FFFFFF", border: "#E8E6E1",
-  text: "#1A1A1A", textSecondary: "#6B6560", textTertiary: "#9C9690",
-  positive: "#2D6A4F", positiveBg: "#D8F3DC",
-  negative: "#9B2226", negativeBg: "#FDDEDE",
-  accent: "#264653",
+  bg: "#F6F5F9", surface: "#FFFFFF", border: "#D0CEE0",
+  text: "#1A1830", textSecondary: "#3A3856", textTertiary: "#6E6C8A",
+  positive: "#0F7B4F", positiveBg: "rgba(15, 123, 79, 0.06)",
+  negative: "#A83E54", negativeBg: "rgba(168, 62, 84, 0.06)",
+  accent: "#6B4FCF",
 };
 
 const STUDIES = [
-  { id: "brynjolfsson", label: "Brynjolfsson et al.", year: 2025, n: "5,172", journal: "QJE", color: "#264653" },
-  { id: "noy", label: "Noy & Zhang", year: 2023, n: "453", journal: "Science", color: "#2A9D8F" },
-  { id: "dellacqua", label: "Dell'Acqua et al.", year: 2023, n: "758", journal: "HBS", color: "#E9C46A" },
-  { id: "peng", label: "Peng et al.", year: 2023, n: "95", journal: "arXiv", color: "#F4A261" },
-  { id: "cui", label: "Cui et al.", year: 2025, n: "4,867", journal: "SSRN", color: "#E76F51" },
-  { id: "metr", label: "METR", year: 2025, n: "16", journal: "RCT", color: "#9B2226" },
+  { id: "brynjolfsson", label: "Brynjolfsson et al.", year: 2025, n: "5,172", journal: "QJE", color: "#3458A8" },
+  { id: "noy", label: "Noy & Zhang", year: 2023, n: "453", journal: "Science", color: "#0EA5A5" },
+  { id: "dellacqua", label: "Dell'Acqua et al.", year: 2023, n: "758", journal: "HBS", color: "#6B4FCF" },
+  { id: "peng", label: "Peng et al.", year: 2023, n: "95", journal: "arXiv", color: "#0F7B4F" },
+  { id: "cui", label: "Cui et al.", year: 2025, n: "4,867", journal: "SSRN", color: "#7A9EF0" },
+  { id: "metr", label: "METR", year: 2025, n: "16", journal: "RCT", color: "#A83E54" },
 ];
 
 const DOMAINS = ["Customer Support", "Writing", "Consulting", "Software Dev", "Medical", "Legal"];

@@ -1,11 +1,9 @@
 ---
-import building from "@images/building-2-min.png";
 import { Image } from "astro:assets";
-
 import { getLocaleFromUrl } from "@/js/localeUtils";
-import { getLocalizedRoute, getTranslatedData, useTranslations } from "@/js/translationUtils";
+import headshotSrc from "../../data/authors/hailey-mullen/hailey-headshot.png";
+
 const currLocale = getLocaleFromUrl(Astro.url);
-const t = useTranslations(currLocale);
 
 interface Props {
   class?: string;
@@ -15,56 +13,156 @@ const { class: className } = Astro.props as Props;
 ---
 
 <section class:list={["py-16 md:py-24", className]}>
-  <div class="site-container grid gap-8 md:grid-cols-2 md:gap-16">
-    <div class="" id="about-side-image-trigger">
-      <h2 data-mos="fade-up" class="h1">Space Coast Medicine</h2>
+  <div class="site-container">
 
-      <div class="text-muted-foreground mt-6">
-        <p
-          class="md:text-lg"
-          data-mos="fade-up"
-          data-mos-anchor="#about-side-image-trigger"
-          data-mos-delay=".2"
-        >
-          At Space Coast Medicine, our doctors believe in treating the whole person, not just the
-          symptoms. We prioritize holistic primary care and work with our patients to create
-          personalized care plans. We empower our patients to take an active role in their health
-          journey.
-        </p>
-
-        <p
-          class="mt-6 md:text-lg"
-          data-mos="fade-up"
-          data-mos-anchor="#about-side-image-trigger"
-          data-mos-delay=".4"
-        >
-          At Space Coast Medicine, our doctors believe in treating the whole person, not just the
-          symptoms. We prioritize holistic primary care and work with our patients to create
-          personalized care plans. We empower our patients to take an active role in their health
-          journey.
-        </p>
-
-        <p
-          class="mt-6 md:text-lg"
-          data-mos="fade-up"
-          data-mos-anchor="#about-side-image-trigger"
-          data-mos-delay=".6"
-        >
-          At Space Coast Medicine, our doctors believe in treating the whole person, not just the
-          symptoms. We prioritize holistic primary care and work with our patients to create
-          personalized care plans.
-        </p>
+    <!-- Header -->
+    <div class="mb-14 max-w-3xl" data-mos="fade-up">
+      <div
+        class="mb-5 inline-flex items-center gap-2 rounded-full border px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.1em]"
+        style="color: var(--color-bid-coral); background: rgba(107,79,207,0.06); border-color: rgba(107,79,207,0.18);"
+      >
+        ◦ About
       </div>
+      <h1
+        class="font-heading text-[clamp(2rem,5vw,3rem)] font-extrabold leading-tight tracking-tight"
+        style="color: var(--color-bid-text);"
+      >
+        Hailey Mullen
+      </h1>
+      <p
+        class="mt-3 text-sm font-medium tracking-wide"
+        style="color: var(--color-bid-text-tertiary);"
+      >
+        Investment Banking Analyst · Morgan Stanley · Dartmouth '25
+      </p>
     </div>
 
-    <div class="aspect-square overflow-clip rounded-2xl">
-      <Image
-        src={building}
-        alt="Space Coast Medicine Building"
-        width={1001}
-        densities={[1.5, 2]}
-        class="h-full w-full object-cover"
-      />
+    <!-- Three-column layout: photo | bio | contact -->
+    <div class="grid gap-12 md:grid-cols-[220px_1fr_320px]">
+
+      <!-- Photo -->
+      <div data-mos="fade-up" data-mos-delay=".1">
+        <Image
+          src={headshotSrc}
+          alt="Hailey Mullen"
+          width={440}
+          height={616}
+          class="w-full rounded-2xl object-cover shadow-lg"
+          style="aspect-ratio: 5/7; object-position: center top;"
+        />
+      </div>
+
+      <!-- Bio -->
+      <div
+        class="space-y-5"
+        style="font-family: var(--font-serif); color: var(--color-bid-text-secondary); font-size: 15px; line-height: 1.8;"
+      >
+        <p data-mos="fade-up" data-mos-delay=".1">
+          I've always been drawn to understanding how things work — not just what to think about them,
+          but the actual structure underneath. That impulse led me through physics, then engineering at
+          Dartmouth, where I studied mechanical, operations, and systems engineering. The question driving
+          all of it was always the same: what are the components, how do they interact, and what behavior
+          emerges from the structure? A master's in industrial and systems engineering sharpened the
+          mathematical side of that — optimization, decision theory, systems under uncertainty. Finance,
+          where I now work at Morgan Stanley, puts you in contact with some of the most complex systems
+          in the world: companies, markets, capital structures, entire industries being restructured by
+          technology.
+        </p>
+        <p data-mos="fade-up" data-mos-delay=".2">
+          A lot of my work at Morgan Stanley has put me close to questions about AI — how it actually
+          changes knowledge work, where it helps, and where it quietly makes things worse. I was selected
+          as one of twelve firm-wide AI ambassadors to evaluate six AI platforms alongside senior
+          leadership. Watching smart, motivated people interact with the same tools and get dramatically
+          different outcomes is the kind of thing that demands an explanation.
+        </p>
+        <p data-mos="fade-up" data-mos-delay=".3">
+          <strong style="color: var(--color-bid-text); font-weight: 600;">Break it Down.</strong>
+          is where I share what I find. Most of the things worth understanding right now — AI,
+          organizations, markets, technology — don't get explained, they just get covered. The goal is
+          to trace what's actually happening and write it clearly enough that the explanation is useful.
+          It goes out once a month.
+        </p>
+
+        <!-- Credential tags -->
+        <div data-mos="fade-up" data-mos-delay=".4" class="flex flex-wrap gap-2 pt-2">
+          {[
+            "Dartmouth MEng '25",
+            "Morgan Stanley IB",
+            "AI & Systems",
+            "Operations Research",
+            "M&A",
+          ].map((tag) => (
+            <span
+              class="rounded-full border px-3 py-1 text-xs font-medium"
+              style="border-color: var(--color-bid-border); color: var(--color-bid-text-tertiary); background: var(--color-bid-surface);"
+            >
+              {tag}
+            </span>
+          ))}
+        </div>
+      </div>
+
+      <!-- Contact card -->
+      <div data-mos="fade-up" data-mos-delay=".3">
+        <div
+          class="rounded-2xl p-7"
+          style="background: var(--color-bid-surface); border: 1.5px solid var(--color-bid-border); box-shadow: 0 2px 16px rgba(0,0,0,0.06);"
+        >
+          <p
+            class="mb-1 text-xs font-semibold uppercase tracking-widest"
+            style="color: var(--color-bid-text-tertiary);"
+          >
+            Get in touch
+          </p>
+          <p class="mb-6 text-sm" style="color: var(--color-bid-text-secondary);">
+            Questions, feedback, or want to talk research?
+          </p>
+
+          <div class="space-y-3">
+            <!-- Email -->
+            <a
+              href="mailto:haileyamullen@gmail.com"
+              class="group flex items-center gap-3 rounded-xl border px-4 py-3 text-sm font-medium transition-all hover:-translate-y-0.5"
+              style="border-color: var(--color-bid-border); color: var(--color-bid-text); background: var(--color-bid-bg);"
+            >
+              <span
+                class="flex h-8 w-8 flex-none items-center justify-center rounded-lg"
+                style="background: rgba(107,79,207,0.1); color: var(--color-bid-coral);"
+              >
+                <!-- Envelope SVG -->
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="2" y="4" width="20" height="16" rx="2"/>
+                  <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+                </svg>
+              </span>
+              <span>haileyamullen@gmail.com</span>
+            </a>
+
+            <!-- LinkedIn -->
+            <a
+              href="https://www.linkedin.com/in/hailey-mullen-3"
+              target="_blank"
+              rel="noreferrer noopener"
+              class="group flex items-center gap-3 rounded-xl border px-4 py-3 text-sm font-medium transition-all hover:-translate-y-0.5"
+              style="border-color: var(--color-bid-border); color: var(--color-bid-text); background: var(--color-bid-bg);"
+            >
+              <span
+                class="flex h-8 w-8 flex-none items-center justify-center rounded-lg"
+                style="background: rgba(74,124,206,0.1); color: var(--color-bid-slate);"
+              >
+                <!-- LinkedIn SVG -->
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                  <rect x="2" y="9" width="4" height="12"/>
+                  <circle cx="4" cy="4" r="2"/>
+                </svg>
+              </span>
+              <span>linkedin.com/in/hailey-mullen</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>

@@ -36,9 +36,9 @@ interface Props {
 const { leftTitle, rightTitle, rows, accent = "neutral", caption } = Astro.props;
 
 const leftAccent = accent === "contrast" ? "text-bid-teal" : "text-bid-slate";
-const rightAccent = accent === "contrast" ? "text-bid-coral" : "text-bid-slate";
+const rightAccent = accent === "contrast" ? "text-bid-negative" : "text-bid-slate";
 const leftBorder = accent === "contrast" ? "border-bid-teal/30" : "border-bid-border";
-const rightBorder = accent === "contrast" ? "border-bid-coral/30" : "border-bid-border";
+const rightBorder = accent === "contrast" ? "border-bid-negative/30" : "border-bid-border";
 ---
 
 <div class="bid-comparison-box my-8 not-content">

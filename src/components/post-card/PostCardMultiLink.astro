@@ -3,6 +3,7 @@ import { Image } from "astro:assets";
 import { type CollectionEntry, getEntries } from "astro:content";
 import { Icon } from "astro-icon/components";
 
+import BidMountainCanvas from "@/components/bid/BidMountainCanvas.astro";
 import Category from "@/components/category/Category.astro";
 import { getLocaleFromUrl } from "@/js/localeUtils";
 import { formatDate, humanize, slugify } from "@/js/textUtils";
@@ -41,8 +42,8 @@ const authorsData = await getEntries(authors);
           />
         </figure>
       ) : (
-        <div class="bg-muted flex h-full w-full items-center justify-center rounded-md border p-4 text-center md:rounded-lg">
-          <h3 class="font-heading text-xl font-semibold text-pretty md:text-2xl">{title}</h3>
+        <div class="overflow-hidden rounded-md border md:rounded-lg">
+          <BidMountainCanvas height={190} />
         </div>
       )
     }

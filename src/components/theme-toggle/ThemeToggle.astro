@@ -13,6 +13,7 @@ const { class: className, animationDuration = 300, ...rest } = Astro.props as Pr
 <button
   class:list={[className, "theme-toggle primary-focus nav__link--base rounded-full p-2"]}
   aria-label="color theme toggle"
+  data-theme-toggle
   {...rest}
 >
   <!-- placeholder -->
