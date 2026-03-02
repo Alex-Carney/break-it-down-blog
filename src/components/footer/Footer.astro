@@ -1,19 +1,12 @@
 ---
 import SiteLogo from "@/components/site-logo/SiteLogo.astro";
-import SocialIcon from "@/components/social-icon/SocialIcon.astro";
 import { getLocaleFromUrl } from "@/js/localeUtils";
 import { getTranslatedData } from "@/js/translationUtils";
-
-import FooterLink from "./FooterLink.astro";
 
 const currLocale = getLocaleFromUrl(Astro.url);
 const siteData = getTranslatedData("siteData", currLocale);
 const today = new Date();
 
-/**
- * Footer columns and links configuration
- * Edit this object to change column titles and links.
- */
 const footerColumns = [
   {
     title: "Navigation",
@@ -21,7 +14,6 @@ const footerColumns = [
       { label: "Home", href: "/" },
       { label: "Blog", href: "/blog" },
       { label: "About", href: "/about" },
-      { label: "Contact", href: "/contact" },
     ],
   },
   {
@@ -31,13 +23,6 @@ const footerColumns = [
       { label: "Categories", href: "/categories" },
       { label: "Tags", href: "/tags" },
       { label: "RSS Feed", href: "/rss.xml" },
-    ],
-  },
-  {
-    title: "Legal",
-    links: [
-      { label: "Privacy Policy", href: "#" },
-      { label: "Terms of Use", href: "#" },
     ],
   },
 ];
@@ -51,25 +36,23 @@ const footerColumns = [
           <div class="lg:max-w-sm">
             <SiteLogo />
             <p class="text-muted-foreground mt-4 font-medium md:max-w-xs">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lectus interdum facilisis
-              odio scelerisque vel neque.
+              Complex systems, explained clearly. Research-backed analysis, once a month.
             </p>
-            <div class="mt-10 flex flex-wrap gap-3 lg:mt-16">
-              <SocialIcon
-                href="https://twitter.com/BowTiedWebReapr"
-                icon="tabler/brand-x"
-                social="twitter (x)"
-              />
-              <SocialIcon
-                href="https://www.threads.com/@bowtiedwebreaper"
-                icon="tabler/brand-threads"
-                social="threads"
-              />
-              <SocialIcon
-                href="https://www.threads.com/@bowtiedwebreaper"
-                icon="tabler/brand-instagram"
-                social="instagram"
-              />
+            <div class="mt-8 flex flex-col gap-1 text-sm">
+              <a
+                href="mailto:haileyamullen@gmail.com"
+                class="text-muted-foreground hover:text-foreground transition-colors"
+              >
+                haileyamullen@gmail.com
+              </a>
+              <a
+                href="https://www.linkedin.com/in/hailey-mullen-3"
+                target="_blank"
+                rel="noreferrer noopener"
+                class="text-muted-foreground hover:text-foreground transition-colors"
+              >
+                linkedin.com/in/hailey-mullen-3
+              </a>
             </div>
           </div>
         </div>
@@ -79,7 +62,14 @@ const footerColumns = [
               <h3 class="font-heading mb-8 text-sm font-medium uppercase">{col.title}</h3>
               <ul class="space-y-2">
                 {col.links.map((link) => (
-                  <FooterLink label={link.label} href={link.href} />
+                  <li>
+                    <a
+                      href={link.href}
+                      class="text-muted-foreground hover:text-foreground text-sm transition-colors"
+                    >
+                      {link.label}
+                    </a>
+                  </li>
                 ))}
               </ul>
             </div>
@@ -89,7 +79,7 @@ const footerColumns = [
     </div>
     <p class="text-muted-foreground py-5 text-center text-sm leading-normal font-medium">
       Copyright {today.getFullYear()}
-      {siteData.name}. All Rights Reserved
+      {siteData.name} All Rights Reserved
     </p>
   </div>
 </section>

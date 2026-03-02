@@ -143,7 +143,7 @@
     --color-bid-slate: #7A9EF0;                    /* bright annotation blue */
     --color-bid-teal: #0EA5A5;                     /* interactive teal (same both modes) */
     --color-bid-gold: #7A9EF0;                     /* same as slate in dark */
-    --color-bid-warm: #F59E0B;                     /* amber — caution, warning */
+    --color-bid-warm: #F0708A;                     /* warm pink — caution, warning */
     --color-bid-coral: #A48AFF;                    /* glowing lavender purple */
     --color-bid-positive: #3EE0A0;                 /* bright mint/emerald — positive */
     --color-bid-positive-bg: rgba(62, 224, 160, 0.06);

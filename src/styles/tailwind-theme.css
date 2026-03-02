@@ -52,7 +52,7 @@
   --color-bid-slate: #3458A8;                 /* annotation blue — data notes, definitions */
   --color-bid-teal: #0EA5A5;                  /* interactive teal — toggles, UI controls */
   --color-bid-gold: #3458A8;                  /* data label blue — same as slate */
-  --color-bid-warm: #B45309;                  /* amber — caution, warning callouts */
+  --color-bid-warm: #C4506A;                  /* warm pink — caution, warning callouts */
   --color-bid-coral: #6B4FCF;                 /* brand purple — key findings, highlights */
   --color-bid-positive: #0F7B4F;              /* deep emerald — positive outcomes, gains */
   --color-bid-positive-bg: rgba(15, 123, 79, 0.06);

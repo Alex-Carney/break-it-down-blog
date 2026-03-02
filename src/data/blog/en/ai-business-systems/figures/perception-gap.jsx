@@ -1,5 +1,4 @@
-import type { Theme } from "./tokens";
-import { FigureContainer } from "./shared";
+import FigureContainer from './figure-container';
 
 const DATA = [
   { label: "Pre-study prediction", value: -24, note: '"AI will save me 24% of my time"' },
@@ -7,17 +6,16 @@ const DATA = [
   { label: "Actual result", value: 19, note: "Measured: 19% slower" },
 ];
 
-export default function PerceptionGap({ t }: { t: Theme }) {
+export default function PerceptionGap({ t }) {
   const barH = 36;
   const gapBetween = 10;
   const maxWidth = 380;
   const maxVal = 30;
-  const scale = (v: number) => (Math.abs(v) / maxVal) * (maxWidth / 2);
+  const scale = (v) => (Math.abs(v) / maxVal) * (maxWidth / 2);
 
   return (
     <FigureContainer
       t={t}
-      number="3"
       title="The Perception Gap"
       subtitle="Experienced developers predicted AI would save them 24% of their time. They actually got 19% slower — and didn't notice."
       source="Becker et al. / METR (arXiv 2025). N=16 experienced open-source developers, 246 tasks, $150/hr."
@@ -114,7 +112,7 @@ export default function PerceptionGap({ t }: { t: Theme }) {
           style={{
             display: "flex",
             justifyContent: "center",
-            marginTop: 16,
+            marginTop: 28,
             padding: "12px 18px",
             borderRadius: 6,
             background: t.blueBg,

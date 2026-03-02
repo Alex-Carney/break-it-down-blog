@@ -21,7 +21,11 @@
       "Bash(xargs grep -l \"Content\")",
       "Bash(sort -k9)",
       "Bash(git -C \"c:/Users/Hailey/break-it-down-blog\" status --short \"src/data/blog/en/ai-business-systems/figures/\")",
-      "Bash(test -f \"c:/Users/Hailey/break-it-down-blog/src/data/blog/en/ai-business-systems/figures/tokens.ts\")"
+      "Bash(test -f \"c:/Users/Hailey/break-it-down-blog/src/data/blog/en/ai-business-systems/figures/tokens.ts\")",
+      "Read(//c/Users/Hailey/break-it-down-blog/**)"
+    ],
+    "additionalDirectories": [
+      "C:\\Users\\Hailey\\.claude\\projects\\c--Users-Hailey-break-it-down-blog\\memory"
     ]
   }
 }

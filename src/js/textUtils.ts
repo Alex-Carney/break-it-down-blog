@@ -19,16 +19,18 @@ export function slugify(text: string): string {
  * * returns "humanized" text. runs slugify() and then replaces - with space and upper case first letter of every word, and lower case the rest
  * @param text: string - text to humanize
  */
+const ACRONYMS = new Set(["ai", "api", "ml", "llm", "saas", "roi", "ux", "ui"]);
+
 export function humanize(text: string): string {
   const slugifiedText = slugify(text);
   return (
     slugifiedText
       .replace(/-/g, " ") // replace "-" with space
-      // .toLowerCase();
       .replace(
-        // upper case first letter of every word, and lower case the rest
         /\w\S*/g,
-        (w) => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase(),
+        (w) => ACRONYMS.has(w.toLowerCase())
+          ? w.toUpperCase()
+          : w.charAt(0).toUpperCase() + w.slice(1).toLowerCase(),
       )
   );
 }

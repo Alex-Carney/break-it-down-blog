@@ -1,62 +1,59 @@
 /* ─────────────────────────────────────────────────────────────
    faster-worse-figures.jsx — MDX entry-point
-   Wraps individual figure components with useDarkMode() so MDX
-   can use them as self-contained islands (client:load).
+   Wraps Tier 2 figure components with useDarkMode() so MDX
+   can use them as self-contained React islands (client:load).
+
+   Tier 1 inline components (Callout, StatCallout) are Astro
+   components imported directly in MDX — no wrapper needed.
    ───────────────────────────────────────────────────────────── */
 
 import { useState, useEffect } from "react";
-import { THEMES } from "./tokens";
-import { KEYFRAMES_CSS } from "./shared";
-import ThesisToggle from "./ThesisToggle";
-import SixPatterns from "./SixPatterns";
-import PerceptionGap from "./PerceptionGap";
-import TwoLoops from "./TwoLoops";
-import SpendingInversion from "./SpendingInversion";
+import { THEMES } from "./theme";
+
+// Tier 2 figures
+import PerceptionGapInner from "./perception-gap";
+import TwoLoopsInner from "./two-loops";
+import SpendingInversionInner from "./spending-inversion";
+import CollaborationModesInner from "./collaboration-modes";
+import ThreePartDistinctionInner from "./three-part-distinction";
 
 function useDarkMode() {
-  const [isDark, setIsDark] = useState(true); // default dark (matches site default)
+  const [isDark, setIsDark] = useState(true);
   useEffect(() => {
     setIsDark(document.documentElement.classList.contains("dark"));
     const obs = new MutationObserver(() =>
       setIsDark(document.documentElement.classList.contains("dark"))
     );
-    obs.observe(document.documentElement, { attributes: true, attributeFilter: ["class"] });
+    obs.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["class"],
+    });
     return () => obs.disconnect();
   }, []);
   return isDark;
 }
 
-export function Figure1ThesisToggle() {
+export function PerceptionGap() {
   const t = useDarkMode() ? THEMES.dark : THEMES.light;
-  return (
-    <>
-      <style>{KEYFRAMES_CSS}</style>
-      <ThesisToggle t={t} />
-    </>
-  );
+  return <PerceptionGapInner t={t} />;
 }
 
-export function Figure2SixPatterns() {
+export function TwoLoops() {
   const t = useDarkMode() ? THEMES.dark : THEMES.light;
-  return <SixPatterns t={t} />;
+  return <TwoLoopsInner t={t} />;
 }
 
-export function Figure3PerceptionGap() {
+export function SpendingInversion() {
   const t = useDarkMode() ? THEMES.dark : THEMES.light;
-  return <PerceptionGap t={t} />;
+  return <SpendingInversionInner t={t} />;
 }
 
-export function Figure4TwoLoops() {
+export function CollaborationModes() {
   const t = useDarkMode() ? THEMES.dark : THEMES.light;
-  return <TwoLoops t={t} />;
+  return <CollaborationModesInner t={t} />;
 }
 
-export function Figure5SpendingInversion() {
+export function ThreePartDistinction() {
   const t = useDarkMode() ? THEMES.dark : THEMES.light;
-  return (
-    <>
-      <style>{KEYFRAMES_CSS}</style>
-      <SpendingInversion t={t} />
-    </>
-  );
+  return <ThreePartDistinctionInner t={t} />;
 }

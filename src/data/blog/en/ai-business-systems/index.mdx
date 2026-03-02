@@ -1,6 +1,6 @@
 ---
 title: "The Hidden Variable in AI Adoption"
-description: In a controlled study, 52 developers used the same AI tool on the same task. Outcomes ranged from 24% to 86%. Sixteen studies trace what drives that 62-point gap — and why the variable that causes it is invisible from the outside.
+description: In a controlled study, 52 developers used the same AI tool on the same task. Outcomes ranged from 24% to 86%. Sixteen studies trace what drives that 62-point gap, and why the variable that causes it is invisible from the outside.
 draft: false
 authors:
   - hailey-mullen
@@ -14,11 +14,14 @@ tags:
   - collaboration
 ---
 
-import { Figure1ThesisToggle, Figure2SixPatterns, Figure3PerceptionGap, Figure4TwoLoops, Figure5SpendingInversion } from '../ai-business-systems/figures/faster-worse-figures.jsx'
+import Callout from '@/components/blog/Callout.astro'
+import StatCallout from '@/components/blog/StatCallout.astro'
+import { PerceptionGap, TwoLoops, SpendingInversion, CollaborationModes, ThreePartDistinction } from '../ai-business-systems/figures/faster-worse-figures.jsx'
+import CovariationDisplay from '../ai-business-systems/figures/covariation-display-v2.jsx'
 
 # The Hidden Variable in AI Adoption
 
-**In a controlled study, 52 developers used the same AI tool on the same task. Outcomes ranged from 24% to 86%. Sixteen studies trace what drives that 62-point gap — and why it's invisible from the outside.**
+**In a controlled study, 52 developers used the same AI tool on the same task. Outcomes ranged from 24% to 86%. Sixteen studies trace what drives that 62-point gap, and why it's invisible from the outside.**
 
 *Break it Down. | February 2026*
 
@@ -32,37 +35,53 @@ When researchers scored them afterward, the best-performing group averaged 86%. 
 
 A 62-percentage-point spread, among developers using identical tools on an identical task. The gap between the highest-performing and lowest-performing groups of AI users was larger than the gap between most AI users and people who used no AI at all.
 
-Something was driving that variation. It was not the tool, nor skill level, nor task difficulty. And from the outside, watching these developers work, the difference was nearly imperceptible. [1]
+Something was driving that variation. It was not the tool, nor skill level, nor task difficulty. And from the outside, watching these developers work, the difference was nearly imperceptible. <a href="#ref-1">[1]</a>
 
-<Figure2SixPatterns client:load />
+<StatCallout value="+40%" label="quality on structured tasks" source="[2] Dell'Acqua et al. (2023)" accent="teal" />
+
+<StatCallout value="−19pp" label="on judgment tasks, same session" source="[2] Dell'Acqua et al. (2023)" accent="coral" />
 
 This article examines what that variable is, where it appears across sixteen studies, and why it warrants more attention than whatever AI model an organization has most recently deployed.
 
 ---
 
-## 2. Productivity Gains and Their Boundary Conditions
+## 2. The Evidence
 
-Multiple well-designed studies have documented meaningful productivity improvements from AI tools. BCG consultants using GPT-4 completed 12% more tasks, 25% faster, at 40% higher quality. [2] Customer service agents at a Fortune 500 company resolved 14% more issues per hour, with the largest gains among newer workers. [4] GitHub Copilot users finished coding tasks 56% faster. [11] A meta-analysis covering thousands of participants places the median productivity improvement between 12% and 25%.
+Multiple well-designed studies have documented meaningful productivity improvements from AI tools. BCG consultants using GPT-4 completed 12% more tasks, 25% faster, at 40% higher quality. <a href="#ref-2">[2]</a> Customer service agents at a Fortune 500 company resolved 14% more issues per hour, with the largest gains among newer workers. <a href="#ref-4">[4]</a> GitHub Copilot users finished coding tasks 56% faster. <a href="#ref-11">[11]</a> A meta-analysis covering thousands of participants places the median productivity improvement between 12% and 25%.
 
 These findings are credible and consistent. They are also incomplete.
 
-The same BCG study that produced the 40% quality gain included a second set of tasks requiring integration of information across sources, evaluation of conflicting evidence, and judgment rather than execution of established patterns. On those tasks, consultants who used AI performed 19 percentage points worse than the control group that used no AI at all. Same participants, same tool, same session, opposite outcome. [2]
+The same BCG study that produced the 40% quality gain included a second set of tasks requiring integration of information across sources, evaluation of conflicting evidence, and judgment rather than execution of established patterns. On those tasks, consultants who used AI performed 19 percentage points worse than the control group that used no AI at all. Same participants, same tool, same session, opposite outcome. <a href="#ref-2">[2]</a>
 
-The METR study reinforces this pattern. Sixteen developers, working on their own projects, were 19% slower with AI assistance. They did not notice. Before the study, they predicted AI would save them 24% of their time. Afterward, they believed it had saved them approximately 20%. The measured result was a 19% increase in time to completion. [3]
+The METR study reinforces this pattern. Sixteen developers, working on their own projects, were 19% slower with AI assistance. They did not notice. Before the study, they predicted AI would save them 24% of their time. Afterward, they believed it had saved them approximately 20%. The measured result was a 19% increase in time to completion. <a href="#ref-3">[3]</a>
 
 The distance between perceived and actual performance was 43 percentage points. Participants *perceived* significant time savings while incurring a significant time cost.
 
-<Figure3PerceptionGap client:load />
+<PerceptionGap client:load />
 
 Taken together, the evidence does not support the conclusion that AI uniformly improves or uniformly degrades performance. The same tool, used by the same people, in some cases during the same session, produces dramatically different outcomes depending on a variable that is not immediately visible.
 
----
-
-## 3. Six Patterns, One Study, 62 Points
-
-The Anthropic study is distinctive because it moved beyond outcome measurement to process observation. Shen and Tamkin recorded screen sessions, documenting what the fifty-two developers did with the AI turn by turn, prompt by prompt. They identified six distinct behavioral patterns. [1]
+The Anthropic study is distinctive because it moved beyond outcome measurement to process observation. Shen and Tamkin recorded screen sessions, documenting what the fifty-two developers did with the AI turn by turn, prompt by prompt. They identified six distinct behavioral patterns. <a href="#ref-1">[1]</a>
 
 Three patterns produced high scores (65–86%). Three produced low scores (24–39%). The patterns were unrelated to how frequently developers used AI; some high scorers used it heavily, and some low scorers barely engaged with it. The differentiator was structural. It was *how* they engaged with the tool.
+
+<Callout type="definition" title="Cognitive Engagement">
+Whether the practitioner actively processes AI output (interrogating logic, probing assumptions, verifying against domain knowledge) or passively accepts it. The variable that explains the outcome gap across sixteen studies, and the one most organizations are not measuring.
+</Callout>
+
+<CovariationDisplay client:load />
+
+<StatCallout value="43pp" label="gap between perceived and actual performance" source="[3] METR (2025), N=16" accent="slate" />
+
+<StatCallout value="47pp" label="outcome gap from ~4 minutes of follow-up questions" source="[1] Shen & Tamkin (2026)" accent="slate" />
+
+<Callout type="insight">
+The study does not identify a stable demographic or experiential variable that predicts which collaboration pattern someone adopts. Roughly half the developers and three-quarters of the consultants naturally maintained cognitive engagement. The gap measures the conditions of work more than the qualities of workers.
+</Callout>
+
+---
+
+## 3. What Engagement Does
 
 The highest-scoring pattern, Generation-Then-Comprehension (averaging 86%), followed a consistent sequence: the developer asked the AI to generate code, then spent several follow-up turns probing the output. "Why did you structure this that way?" "What happens if the input is unexpected?" "Walk me through how this handles errors." The AI served as a generator; the developer then interrogated the output until they understood it.
 
@@ -70,124 +89,136 @@ The lowest-scoring pattern, AI Delegation (averaging 39%), was nearly identical 
 
 The time difference between these two approaches was approximately four minutes.
 
-The two workflows merit direct comparison. Both developers open a chat window. Both type a request. Both receive code. The only visible difference is two follow-up questions taking roughly four minutes. Everything else is identical.
+<Callout type="definition" title="Productive Friction">
+The cognitive work forced by encountering difficulty (errors, contradictions, unfamiliar structures) that builds and maintains domain understanding. AI's core value proposition is reducing friction. The practitioners who succeed with AI preserve the friction that builds understanding while eliminating the friction that merely slows execution.
+</Callout>
 
-From a manager's dashboard, a time-tracking tool, or any conventional productivity metric, these two developers are nearly indistinguishable. The faster developer may even appear more productive by standard measures.
+<Callout type="evidence" title="The error-count finding">
+Developers who fully delegated to AI encountered a median of 1 error during their session. Developers who used no AI encountered 3. This initially favors AI: fewer errors, less friction. But the debugging questions on the evaluation showed the largest score gap between conditions. The skill most dependent on encountering and resolving problems was the skill most degraded by AI assistance.
+</Callout>
 
-The outcome gap between them is 47 percentage points.
+Those follow-up questions do more than check the AI's work. When you ask why a solution is structured a particular way, you are forced to engage with the underlying logic, the same mental work that debugging an error would have forced naturally. The high-scoring developers were recreating that productive friction on purpose: using AI to generate the case and then thinking through it themselves.
 
-<Figure1ThesisToggle client:load />
+The developers who delegated used AI to bypass learning entirely. They produced working code without understanding why it works. On the assessment measuring actual comprehension, they scored 17% lower than the group that used no AI. <a href="#ref-1">[1]</a> AI did not merely fail to support their learning; it actively interfered with it by removing the friction that forces understanding.
 
-This finding reframes the productivity question. The relevant variable is not whether AI is used, how often, or which model. It is what happens in the minutes after the AI produces its output.
+<CollaborationModes client:load />
 
----
+<Callout type="insight">
+There is more than one way to collaborate effectively. Some practitioners integrate AI throughout their workflow, interrogating at every step. Others use AI selectively, doing the core analytical work themselves. Both modes produce strong outcomes and build expertise. Only full delegation, ceding judgment entirely, fails. The variable is not how much AI you use. It is whether you remain the active cognitive agent.
+</Callout>
 
-## 4. What Follow-Up Questions Actually Do
-
-Those follow-up questions do more than check the AI's work. When you ask why a solution is structured a particular way, you are forced to engage with the underlying logic — the same mental work that debugging an error would have forced naturally. The high-scoring developers were recreating that productive friction on purpose: using AI to generate the case and then thinking through it themselves.
-
-Developers who delegated to AI without follow-up encountered a median of 1 error during their session. Developers who used no AI encountered a median of 3 errors. [1] This initially appears to favor AI assistance: fewer errors, less friction. But errors are the mechanism through which practitioners build mental models of a system. Each error forces engagement with *why* something fails, which builds comprehension of how the system actually operates.
-
-The developers who asked follow-up questions were deliberately reconstructing this productive friction. Asking "why does this approach work?" or "what would happen if the input changed?" forces the same mental engagement as debugging an error — but faster and more targeted. These developers used AI to accelerate learning rather than substitute for it.
-
-The developers who delegated used AI to bypass learning entirely. They produced working code without understanding why it works. On the assessment measuring actual comprehension, they scored 17% lower than the group that used no AI. [1] AI did not merely fail to support their learning; it actively interfered with it by removing the friction that forces understanding.
-
-This maps directly onto the BCG results. Tasks where AI improved outcomes (+40% quality) were structured tasks where the output is the deliverable: pattern matching, established procedures, known solutions. Delegation is effective because the AI's answer is, in fact, the answer. Tasks where AI degraded outcomes (−19%) were judgment tasks where the output depends on understanding the problem space: integrating conflicting evidence, evaluating contextual fit, weighing tradeoffs that depend on information the AI does not have. On these tasks, delegation produces confident answers to the wrong question, and the practitioner lacks the understanding to recognize the error. [2]
-
-The BCG researchers described this as the "jagged frontier" — the irregular and difficult-to-predict boundary between tasks where AI excels and tasks where it fails. The critical finding was not about the frontier itself. It was that practitioners who crossed it without recognizing they had done so — applying delegation to judgment tasks — performed worse than those who used no AI at all.
-
-The variable driving the 62-point spread becomes legible at this point. It is not AI fluency in the conventional sense of prompt engineering or tool proficiency. It is the capacity to decompose work into its components, to distinguish which parts are pattern execution (where delegation is effective) from which parts are judgment calls (where the AI must be interrogated rather than trusted), and to maintain that distinction consistently even when delegation is faster and requires less effort.
+<Callout type="warning" title="The validation trap">
+Asking AI to check its own work is a circular question. Among BCG consultants, those who "validated" AI output by asking the model to verify its own analysis were sometimes persuaded by incorrect recommendations. The engagement that produces better outcomes requires the practitioner to bring independent judgment: pushing back based on their own reading of the evidence, not asking the tool to evaluate itself.
+</Callout>
 
 ---
 
-## 5. The Dependency Trap
+## 4. What Happens Over Time
 
 If the variable were purely a matter of technique, a training program would be sufficient. Two additional findings make the problem structurally more difficult.
 
-The first is cognitive. The Shen study measured knowledge *after* the session. Developers who delegated did not merely produce lower-quality work; they built less understanding of the system they were working with. [1] This matters because evaluating AI output requires domain understanding. If delegation erodes understanding, and understanding is the prerequisite for recognizing when delegation is failing, the result is a reinforcing loop: delegation reduces the capacity to identify when delegation is inappropriate.
+The first is cognitive. The Shen study measured knowledge *after* the session. Developers who delegated did not merely produce lower-quality work; they built less understanding of the system they were working with. <a href="#ref-1">[1]</a> This matters because evaluating AI output requires domain understanding. If delegation erodes understanding, and understanding is the prerequisite for recognizing when delegation is failing, the result is a reinforcing loop: delegation reduces the capacity to identify when delegation is inappropriate.
 
-This dynamic has been observed clinically. Budzyń and colleagues studied endoscopists who used an AI detection system for three months, then had it removed. Their detection accuracy dropped 22% relative to their pre-AI baseline — not relative to AI-assisted performance, but relative to where they started before any AI involvement. Three months of AI assistance made the physicians measurably worse at the core clinical task the AI was designed to support. [6]
+This dynamic has been observed clinically. Budzyń and colleagues studied endoscopists who used an AI detection system for three months, then had it removed. Their detection accuracy dropped 22% relative to their pre-AI baseline, not relative to AI-assisted performance, but relative to where they started before any AI involvement. Three months of AI assistance made the physicians measurably worse at the core clinical task the AI was designed to support. <a href="#ref-6">[6]</a>
 
-<Figure4TwoLoops client:load />
+<StatCallout value="−22%" label="endoscopist detection accuracy after 3 months with AI" source="[6] Budzyń et al. (2025)" accent="coral" />
 
-The second finding is motivational. Wu and colleagues conducted four experiments measuring how AI collaboration affects willingness to work independently. After collaborating with AI, participants reported decreased intrinsic motivation for unassisted work and increased boredom, while simultaneously reporting greater perceived control. They recognized their capacity to do the work independently. They preferred not to. [7]
+<TwoLoops client:load />
 
-This creates a second reinforcing loop: AI collaboration reduces the motivation to practice independently, which reduces solo practice, which reduces independent capability, which increases AI reliance. The cognitive loop erodes the *ability* to evaluate AI output. The motivational loop erodes the *desire* to do so. Together, they form a dependency in which both the capacity and the inclination for critical evaluation degrade simultaneously, at precisely the moment when critical evaluation is most necessary.
+The second finding is motivational. Wu and colleagues conducted four experiments measuring how AI collaboration affects willingness to work independently. After collaborating with AI, participants reported decreased intrinsic motivation for unassisted work and increased boredom, while simultaneously reporting greater perceived control. They recognized their capacity to do the work independently. They preferred not to. <a href="#ref-7">[7]</a>
 
-The Wharton study provides the clearest evidence that this dependency is not inevitable. Bastani and colleagues provided students with AI tutoring under two conditions: standard access, and a safeguarded mode where the AI used Socratic questioning to guide understanding rather than providing direct answers. When AI access was removed, the standard-access group scored 17% worse than the control. The safeguarded group scored 127% better than the control group that never used AI at all. [5]
+<Callout type="warning" title="Dependency compounds in both directions">
+The cognitive loop erodes the ability to evaluate AI output: delegation reduces understanding, which reduces the ability to detect when delegation is failing. The motivational loop erodes the desire: AI collaboration reduces intrinsic motivation for independent work, even when practitioners recognize their own capacity. Together, both the capacity and the inclination for critical evaluation degrade simultaneously.
+</Callout>
 
-The difference between AI that degrades performance and AI that dramatically improves it was not the model, the interface, or the underlying technology. It was whether the interaction was structured to build understanding or to circumvent it. Decomposition — the practice of breaking work into directed and evaluable steps and interrogating outputs against domain knowledge — is the safeguard. Undifferentiated delegation is the trap.
+The Wharton study provides the clearest evidence that this dependency is not inevitable. Bastani and colleagues provided students with AI tutoring under two conditions: standard access, and a safeguarded mode where the AI used Socratic questioning to guide understanding rather than providing direct answers. When AI access was removed, the standard-access group scored 17% worse than the control. The safeguarded group scored 127% better than the control group that never used AI at all. <a href="#ref-5">[5]</a>
 
----
+<StatCallout value="+127%" label="with structured engagement (Socratic)" source="[5] Bastani et al. (2024)" accent="teal" />
 
-## 6. What Decomposition Looks Like in Practice
+<StatCallout value="−17%" label="with standard AI access (delegation)" source="[5] Bastani et al. (2024)" accent="coral" />
 
-The term "decomposition" benefits from specificity. Across the studies reviewed here, the highest-performing practitioners shared three concrete behaviors.
-
-First, they **identified sub-steps before engaging AI.** Rather than submitting "build me a function that does X," they separated the problem into component operations: data structure decisions, implementation approach, error handling. Each sub-step was scoped narrowly enough that the practitioner could evaluate the AI's response against their own understanding of the domain.
-
-Second, they **directed the AI through each step** rather than accepting complete outputs. The distinction is between "write me the analysis" and "I'm considering approach X for this constraint set; what are the tradeoffs relative to approach Y?" The first delegates judgment. The second uses AI to inform judgment while retaining it.
-
-Third, they **asked at least one follow-up question per AI output.** Not "is this correct?" — a circular question, asking the system that generated the answer to evaluate it — but rather: "Why this approach instead of the alternative?" or "Under what conditions would this fail?" Questions that require the AI to surface its reasoning, which requires the practitioner to evaluate that reasoning against what they know about the specific context.
-
-This pattern — identify, direct, interrogate — is the behavioral signature of the highest-performing AI users across every study in this analysis. BCG's top-performing practitioners on judgment tasks exhibited precisely this behavior, moving fluidly between AI-generated components and human evaluation without delegating a complete judgment call. [2] The customer service agents who improved most used AI suggestions as inputs to personalized responses, not as finished outputs. [4]
-
-The finding that warrants attention is how uncommon this behavior is. In the Shen study, 14% of developers naturally adopted the high-scoring patterns. [1] The remaining 86% defaulted to some form of delegation — not because they lacked competence, but because delegation requires less effort and produces a subjective experience of productivity that the METR data shows is disconnected from actual performance. [3]
+<Callout type="insight">
+The dependency trap is not inevitable. When AI interaction was structured to require engagement rather than permit delegation, outcomes improved 127% over the control group. When it permitted delegation, outcomes degraded 17%. The difference was not the model or the interface. It was whether the interaction built understanding or circumvented it.
+</Callout>
 
 ---
 
-## 7. The Organizational Implication
+## 5. The Measurement Problem
 
-<Figure5SpendingInversion client:load />
+This maps directly onto the BCG results. Tasks where AI improved outcomes (+40% quality) were structured tasks where the output is the deliverable: pattern matching, established procedures, known solutions. Delegation is effective because the AI's answer is, in fact, the answer. Tasks where AI degraded outcomes (−19%) were judgment tasks where the output depends on understanding the problem space: integrating conflicting evidence, evaluating contextual fit, weighing tradeoffs that depend on information the AI does not have. On these tasks, delegation produces confident answers to the wrong question, and the practitioner lacks the understanding to recognize the error. <a href="#ref-2">[2]</a>
 
-Enterprises currently allocate approximately 93% of AI budgets to technology and 7% to people. [10] BCG's Henderson Institute recommends nearly the inverse: 10% to technology, 20% to process redesign, and 70% to people and change management. [9]
+<Callout type="definition" title="The Three Task Types">
+Pattern execution (boilerplate, known answers): delegation works, metric is correct. Judgment tasks (conflicting evidence, novel tradeoffs): engagement is the productivity strategy, metric is misleading. Learning tasks (unfamiliar systems, skill building): engagement costs ~4 minutes for large capability gain, metric is myopic. Organizations apply one metric to all three.
+</Callout>
+
+<ThreePartDistinction client:load />
+
+The variable driving the 62-point spread becomes legible at this point. It is not AI fluency in the conventional sense of prompt engineering or tool proficiency. It is the capacity to decompose work into its components, to distinguish which parts are pattern execution (where delegation is effective) from which parts are judgment calls (where the AI must be interrogated rather than trusted), and to maintain that distinction consistently even when delegation is faster and requires less effort.
+
+<Callout type="warning" title="Output quality is not an engagement proxy">
+The Randazzo researchers warn directly: do not use the final output of human–AI collaboration (edit rates, acceptance ratios, output quality) as a proxy for monitoring engagement. Professionals who engage deeply may accept AI outputs. Professionals who never engage may also accept AI outputs. The final product can be indistinguishable. The process that produced it is not.
+</Callout>
+
+<Callout type="insight">
+The cost of misclassification is asymmetric. Engagement on a pattern-execution task costs approximately four minutes. Delegation on a judgment task produces wrong answers. When in doubt, engagement is the safer default. The first organizational step is task classification: which of your workflows are pattern execution and which require judgment, because the optimal AI integration strategy is different for each.
+</Callout>
+
+<SpendingInversion client:load />
+
+Enterprises currently allocate approximately 93% of AI budgets to technology and 7% to people. <a href="#ref-10">[10]</a> BCG's Henderson Institute recommends nearly the inverse: 10% to technology, 20% to process redesign, and 70% to people and change management. <a href="#ref-9">[9]</a>
 
 This allocation reflects an assumption that the constraint on AI value is the tool. The evidence reviewed here suggests the binding constraint is the human variable: whether individuals can decompose their work into components where AI delegation is effective and components where human judgment is required, and whether they maintain that distinction under the pressure of daily workflow.
 
-Approximately 6% of organizations qualify as AI high performers by McKinsey's criteria. [8] Those organizations are three times more likely to have redesigned individual workflows at the task level. The pattern is consistent: organizations that capture value from AI are not distinguished by their technology choices but by their investment in the human capability that makes the technology productive.
+Approximately 6% of organizations qualify as AI high performers by McKinsey's criteria. <a href="#ref-8">[8]</a> Those organizations are three times more likely to have redesigned individual workflows at the task level. The pattern is consistent: organizations that capture value from AI are not distinguished by their technology choices but by their investment in the human capability that makes the technology productive.
 
-Deploying AI without developing decomposition capability produces a predictable result: real but modest productivity gains on structured tasks, offset by degraded performance on judgment tasks where the organization's highest-value decisions are concentrated. The 93/7 spending ratio effectively invests in the tool while neglecting the variable that determines whether the tool helps or harms.
+<StatCallout value="93 / 7" label="current enterprise AI spending: technology vs. people" source="[10] Deloitte CTO Survey (2026)" accent="coral" />
+
+<StatCallout value="10 / 20 / 70" label="recommended: tech / process / people" source="[9] BCG Henderson Institute" accent="teal" />
 
 ---
 
-## 8. The Four-Minute Investment
+## 6. The Four-Minute Investment
 
 Sixteen studies, conducted independently across software development, management consulting, customer service, medical practice, and education, converge on the same finding.
 
 AI produces dramatically different outcomes depending on a variable that most organizations are not measuring, most managers cannot observe, and most practitioners are not conscious of. That variable is the mode of collaboration: whether the practitioner decomposes work into directed, evaluable components or delegates whole tasks and accepts outputs without interrogation.
 
-The cost of decomposition is small. Approximately four minutes per task. Two follow-up questions per AI interaction. The returns are large: 62 percentage points in the Shen study [1], the difference between +40% quality and −19% quality in the BCG study [2], the difference between 127% improvement and 17% degradation in the Wharton study. [5]
+The cost of decomposition is small. Approximately four minutes per task. Two follow-up questions per AI interaction. The returns are large: 62 percentage points in the Shen study <a href="#ref-1">[1]</a>, the difference between +40% quality and −19% quality in the BCG study <a href="#ref-2">[2]</a>, the difference between 127% improvement and 17% degradation in the Wharton study. <a href="#ref-5">[5]</a>
 
 The Wharton finding is particularly significant because it establishes that decomposition is not a fixed trait. It is a learnable, practicable discipline that produces better outcomes than either unstructured AI use or working without AI entirely. The developers who scored 86% were not more capable than the developers who scored 24%. They had a different practice.
 
-The most underleveraged investment in AI adoption is not a better model, a new platform, or a larger technology budget. It is a discipline: identify the components of a task before submitting it to AI, direct the AI through each component, and ask one follow-up question per output. Four minutes. That is the hidden variable, and the evidence for its impact is substantial.
+<Callout type="insight">
+On the tasks that matter most to your organization (judgment calls, strategic decisions, unfamiliar territory), engagement is not a cost to productivity. It is what produces the correct output. The most underleveraged investment in AI adoption is the organizational conditions that make four minutes of engagement the default rather than the exception.
+</Callout>
 
 ---
 
 ### Key Studies
 
-**[1]** Shen & Tamkin (Anthropic, 2026) — Analyzed screen recordings of 52 developers using the same AI tool on the same coding task. Identified six distinct interaction patterns; outcomes ranged from 24% to 86%. *(N=52)*
+<span id="ref-1"></span>**[1]** Shen & Tamkin (Anthropic, 2026) | Analyzed screen recordings of 52 developers using the same AI tool on the same coding task. Identified six distinct interaction patterns; outcomes ranged from 24% to 86%. *(N=52)*
 
-**[2]** Dell'Acqua et al. (Harvard Business School / BCG, 2023) — Measured AI-assisted performance of BCG consultants on structured tasks (+40% quality) versus judgment tasks (−19% vs. control). Introduced the "jagged frontier" framework. *(N=758)*
+<span id="ref-2"></span>**[2]** Dell'Acqua et al. (Harvard Business School, 2023) | Measured AI-assisted performance of 758 BCG consultants on structured tasks (+40% quality) versus judgment tasks (−19% vs. control). Introduced the "jagged frontier" framework. *(N=758)*
 
-**[3]** Becker et al. / METR (2025) — Found that developers working on their own projects were 19% slower with AI assistance, while predicting they'd be 24% faster. *(N=16)*
+<span id="ref-3"></span>**[3]** Becker et al. / METR (2025) | Found that developers working on their own projects were 19% slower with AI assistance, while predicting they'd be 24% faster. *(N=16)*
 
-**[4]** Brynjolfsson et al. (Quarterly Journal of Economics, 2025) — Studied an AI chat tool's impact on customer service agents at a Fortune 500 company. Found 14% more issues resolved per hour, with largest gains among newer workers. *(N=5,172)*
+<span id="ref-4"></span>**[4]** Brynjolfsson et al. (Quarterly Journal of Economics, 2025) | Studied an AI chat tool's impact on customer service agents at a Fortune 500 company. Found 14% more issues resolved per hour, with largest gains among newer workers. *(N=5,172)*
 
-**[5]** Bastani et al. (Wharton, 2024) — Compared standard AI tutoring vs. Socratic-guided AI tutoring. Standard access led to 17% worse outcomes after AI removal; Socratic access led to 127% improvement vs. control.
+<span id="ref-5"></span>**[5]** Bastani et al. (Wharton, 2024) | Compared standard AI tutoring vs. Socratic-guided AI tutoring. Standard access led to 17% worse outcomes after AI removal; Socratic access led to 127% improvement vs. control.
 
-**[6]** Budzyń et al. (Lancet Digital Health, 2025) — Endoscopists using an AI detection tool for three months lost 22% of their pre-AI detection accuracy once the tool was removed.
+<span id="ref-6"></span>**[6]** Budzyń et al. (Lancet Digital Health, 2025) | Endoscopists using an AI detection tool for three months lost 22% of their pre-AI detection accuracy once the tool was removed.
 
-**[7]** Wu et al. (Scientific Reports, 2025) — Four experiments showing AI collaboration reduces intrinsic motivation for independent work, even when participants felt more in control. *(N=3,562)*
+<span id="ref-7"></span>**[7]** Wu et al. (Scientific Reports, 2025) | Four experiments showing AI collaboration reduces intrinsic motivation for independent work, even when participants felt more in control. *(N=3,562)*
 
-**[8]** McKinsey State of AI (2025) — Annual survey of AI adoption and performance across organizations. Approximately 6% qualify as high performers.
+<span id="ref-8"></span>**[8]** McKinsey State of AI (2025) | Annual survey of AI adoption and performance across organizations. Approximately 6% qualify as high performers.
 
-**[9]** BCG Henderson Institute — Recommends AI investment allocation of 10% technology / 20% process redesign / 70% people and change management.
+<span id="ref-9"></span>**[9]** BCG Henderson Institute | Recommends AI investment allocation of 10% technology / 20% process redesign / 70% people and change management.
 
-**[10]** Deloitte CTO Survey (Fortune, January 2026) — Enterprise AI spending currently runs approximately 93% technology, 7% people.
+<span id="ref-10"></span>**[10]** Deloitte CTO Survey (Fortune, January 2026) | Enterprise AI spending currently runs approximately 93% technology, 7% people.
 
-**[11]** Peng et al. (GitHub Research, 2023) — Randomized controlled trial finding developers using GitHub Copilot completed coding tasks 56% faster. *(N=95)*
+<span id="ref-11"></span>**[11]** Peng et al. (GitHub Research, 2023) | Randomized controlled trial finding developers using GitHub Copilot completed coding tasks 56% faster. *(N=95)*
+
+<span id="ref-12"></span>**[12]** Randazzo et al. (Harvard Business School, 2025) | Studied 244 BCG consultants across 4,975 human–AI interactions. Identified three collaboration modes: integrated engagement (60%), selective engagement (14%), and full delegation (27%). Only delegation failed. *(N=244)*
 
 ---
 
-*Full citations available on request. Primary sources: Shen & Tamkin (arXiv 2026); Dell'Acqua et al. (HBS 2023); Becker et al. / METR (arXiv 2025); Brynjolfsson et al. (QJE 2025); Bastani et al. (Wharton 2024); Budzyń et al. (Lancet Digital Health 2025); Wu et al. (Scientific Reports 2025); McKinsey State of AI 2025; Peng et al. (GitHub Research 2023).*
+*Full citations available on request. Primary sources: Shen & Tamkin (arXiv 2026); Dell'Acqua et al. (HBS 2023); Becker et al. / METR (arXiv 2025); Brynjolfsson et al. (QJE 2025); Bastani et al. (Wharton 2024); Budzyń et al. (Lancet Digital Health 2025); Wu et al. (Scientific Reports 2025); Randazzo et al. (HBS 2025); McKinsey State of AI 2025; Peng et al. (GitHub Research 2023).*
